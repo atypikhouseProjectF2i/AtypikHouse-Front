@@ -1,0 +1,14 @@
+<div class="accommodation-bloc">
+  <div>
+    <img
+      src="https://source.unsplash.com/random/300×150"
+      [alt]="accommodation.name"
+    />
+    <p>{{ accommodation.price | currency: "EUR":true }}</p>
+  </div>
+
+  <p class="title-accommodation">{{ accommodation.name | titlecase }}</p>
+  <p class="title-region">{{ accommodation.region | titlecase }}</p>
+  <p class="title-description">{{ accommodation.description }}</p>
+  <p>{{ accommodation.typeAccommodation.name | titlecase }}</p>
+</div>

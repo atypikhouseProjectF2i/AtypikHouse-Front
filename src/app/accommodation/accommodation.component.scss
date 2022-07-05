@@ -1,0 +1,19 @@
+.accommodation-bloc {
+    width: 300px;
+    color: #155B1D;
+    background: #fff;
+    margin: 30px 10px;
+    border: solid 1px #155B1D;
+    border-radius: 25px;
+    transition: .5s ease-out;
+}
+
+.accommodation-bloc:hover {
+    transform: scale(1.08);
+}
+
+img {
+    width: 300px;
+    height: 150px;
+    border-radius: 25px 25px 0 0;
+}

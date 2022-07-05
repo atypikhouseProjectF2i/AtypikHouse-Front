@@ -1,0 +1,36 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #155B1D;
+    height: 200px;
+    padding: 30px;
+}
+
+
+
+.menu-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    a {
+        margin-top: 20px;
+        color: #FFF;
+        text-decoration: none;
+        text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+        transition: text-decoration-color 300ms;
+
+        &:hover {
+            text-decoration-color: rgba(255, 255, 255, 1);
+        }
+    }
+}
+
+.credit {
+    margin-top: 20px;
+    text-align: center;
+    color: #FFF;
+    width: 100%;
+}
