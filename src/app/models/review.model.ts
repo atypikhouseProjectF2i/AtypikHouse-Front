@@ -1,4 +1,4 @@
-export class TypeAccommodation {
+export class Review {
   id!: number;
   name!: string;
 }

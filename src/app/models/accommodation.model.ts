@@ -1,4 +1,5 @@
-import { typeAccommodation } from './type-accommodation.model';
+import { Review } from './review.model';
+import { TypeAccommodation } from './type-accommodation.model';
 
 export class Accommodation {
   id!: number;
@@ -13,5 +14,6 @@ export class Accommodation {
   nbSleeping!: number;
   capacityAdult!: number;
   capacityChild!: number;
-  typeAccommodation!: typeAccommodation;
+  typeAccommodation!: TypeAccommodation;
+  reviews!: Review[];
 }

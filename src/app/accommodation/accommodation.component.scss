@@ -1,4 +1,5 @@
 .accommodation-bloc {
+    position: relative;
     width: 300px;
     color: #155B1D;
     background: #fff;
@@ -6,6 +7,7 @@
     border: solid 1px #155B1D;
     border-radius: 25px;
     transition: .5s ease-out;
+    text-align: left;
 }
 
 .accommodation-bloc:hover {
@@ -14,6 +16,25 @@
 
 img {
     width: 300px;
-    height: 150px;
+    height: 200px;
     border-radius: 25px 25px 0 0;
+}
+
+.price {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #FFF;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 25px;
+    font-weight: 700;
+}
+
+p {
+    margin-left: 20px;
+}
+
+.accommodation-title {
+    font-size: 20px;
 }
