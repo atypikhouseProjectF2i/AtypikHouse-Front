@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Accommodation } from '../models/accommodation.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { catchError, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { of } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccommodationListService {
-  private accommodationUrl = 'http://localhost:8000/api';
-  list!: Accommodation[];
+  private accommodationUrl = 'http://localhost:8000/api/accommodations';
+  listAccommodation!: Accommodation[];
 
   constructor(private http: HttpClient) {}
 
-  getAllAccommodations(): Observable<any> {
-    return this.http.get('http://localhost:8000/api/accommodations');
+  getAllAccommodations(): Observable<Accommodation[]> {
+    return this.http
+      .get<Accommodation[]>(`${this.accommodationUrl}`)
+      .pipe(map((value: any) => value['hydra:member']));
   }
 }

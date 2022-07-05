@@ -13,12 +13,6 @@ export class AccommodationListComponent implements OnInit {
   constructor(public accommodationService: AccommodationListService) {}
 
   ngOnInit(): void {
-    this.getData();
-  }
-
-  getData() {
-    this.accommodationService.getAllAccommodations().subscribe((response) => {
-      this.accommodationService.list = response['hydra:member'];
-    });
+    this.accommodation$ = this.accommodationService.getAllAccommodations();
   }
 }

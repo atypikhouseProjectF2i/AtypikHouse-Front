@@ -1,4 +1,5 @@
 export class Review {
   id!: number;
-  name!: string;
+  comment!: string;
+  score!: number;
 }

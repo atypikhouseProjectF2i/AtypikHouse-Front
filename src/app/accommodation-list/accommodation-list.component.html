@@ -1,6 +1,6 @@
 <div class="container-accommodation">
   <app-accommodation
-    *ngFor="let accommodation of accommodationService.list"
+    *ngFor="let accommodation of accommodation$ | async"
     [accommodation]="accommodation"
   >
   </app-accommodation>
