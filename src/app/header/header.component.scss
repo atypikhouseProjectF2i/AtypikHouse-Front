@@ -1,7 +1,7 @@
 .header {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid #155B1D;
     align-items: center;
 }
 
@@ -16,11 +16,11 @@ img {
         margin: 0 10px;
         color: #333;
         text-decoration: none;
-        text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+        text-decoration: underline 0.15em rgba(21, 91, 29, 0);
         transition: text-decoration-color 300ms;
 
         &:hover {
-            text-decoration-color: rgba(0, 0, 0, 1);
+            text-decoration-color: rgba(21, 91, 29, 1);
         }
     }
 
@@ -31,7 +31,6 @@ img {
 
     .active {
         color: #155B1D;
-        text-decoration: underline 0.15em;
         font-weight: 700;
     }
 }

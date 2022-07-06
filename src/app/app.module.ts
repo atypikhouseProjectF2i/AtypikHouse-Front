@@ -13,6 +13,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccommodationListComponent } from './accommodation-list/accommodation-list.component';
+import { SingleAccommodationComponent } from './single-accommodation/single-accommodation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -25,12 +28,15 @@ import { AccommodationListComponent } from './accommodation-list/accommodation-l
     SignupComponent,
     FooterComponent,
     AccommodationListComponent,
+    SingleAccommodationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,4 +1,4 @@
-<div class="accommodation-bloc">
+<div class="accommodation-bloc" (click)="onClickAccommodation()">
   <img
     src="https://source.unsplash.com/random/300×150"
     [alt]="accommodation.name"
@@ -7,12 +7,6 @@
 
   <p class="accommodation-title">{{ accommodation.name | titlecase }}</p>
   <p class="accommodation-region">{{ accommodation.region | titlecase }}</p>
-  <p>{{ accommodation.reviews.length }} avis</p>
-
-  <div *ngIf="accommodation.reviews.length !== 0">
-    <p *ngFor="let review of accommodation.reviews">
-      {{ review.comment }}
-    </p>
-  </div>
+  <p class="accommodation-review">{{ accommodation.reviews.length }} avis</p>
   <p class="accomodation-description">{{ accommodation.description }}</p>
 </div>

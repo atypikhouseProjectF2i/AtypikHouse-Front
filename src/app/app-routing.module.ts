@@ -5,9 +5,11 @@ import { ContactComponent } from './contact/contact.component';
 import { HostComponent } from './host/host.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { SingleAccommodationComponent } from './single-accommodation/single-accommodation.component';
 
 const routes: Routes = [
   { path: 'hebergements', component: AccommodationListComponent },
+  { path: 'hebergements/:id', component: SingleAccommodationComponent },
   { path: 'hote', component: HostComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'connexion', component: LoginComponent },

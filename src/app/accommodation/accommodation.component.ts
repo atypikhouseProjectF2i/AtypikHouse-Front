@@ -1,17 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Accommodation } from '../models/accommodation.model';
 
 @Component({
   selector: 'app-accommodation',
   templateUrl: './accommodation.component.html',
-  styleUrls: ['./accommodation.component.scss']
+  styleUrls: ['./accommodation.component.scss'],
 })
 export class AccommodationComponent implements OnInit {
-
   @Input() accommodation!: Accommodation;
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {}
+
+  onClickAccommodation() {
+    this.router.navigateByUrl(`hebergements/${this.accommodation.id}`);
   }
-
 }

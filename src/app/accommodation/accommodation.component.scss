@@ -1,13 +1,14 @@
 .accommodation-bloc {
     position: relative;
     width: 300px;
-    color: #155B1D;
     background: #fff;
     margin: 30px 10px;
     border: solid 1px #155B1D;
     border-radius: 25px;
     transition: .5s ease-out;
     text-align: left;
+    box-shadow: 4px 4px 20px #D3D3D3;
+    color: #155B1D;
 }
 
 .accommodation-bloc:hover {
@@ -32,9 +33,18 @@ img {
 }
 
 p {
-    margin-left: 20px;
+    margin: 10px 20px;
 }
 
 .accommodation-title {
     font-size: 20px;
+    font-weight: 700;
+}
+
+.accommodation-region {
+    font-weight: 600;
+}
+
+.accommodation-description {
+    color: #000;
 }
