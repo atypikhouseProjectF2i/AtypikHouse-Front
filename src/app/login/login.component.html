@@ -2,14 +2,14 @@
   <form [formGroup]="connectForm">
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="email" />
+      <input type="email" id="email" formControlName="email" />
     </div>
     <div class="form-group">
       <label for="password">Mot de passe</label>
-      <input type="password" id="password" />
+      <input type="password" id="password" formControlName="password" />
     </div>
     <div class="action-button">
-      <button type="submit">Se connecter</button>
+      <button type="submit" class="button-connect">Se connecter</button>
     </div>
   </form>
 </div>

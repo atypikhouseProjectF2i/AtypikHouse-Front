@@ -13,6 +13,7 @@
 
 .accommodation-bloc:hover {
     transform: scale(1.08);
+    cursor: pointer;
 }
 
 img {
@@ -28,6 +29,7 @@ img {
     background-color: #FFF;
     margin-right: 10px;
     padding: 10px;
+    border: solid 3px #155B1D;
     border-radius: 25px;
     font-weight: 700;
 }

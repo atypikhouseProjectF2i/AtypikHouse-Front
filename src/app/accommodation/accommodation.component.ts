@@ -15,6 +15,10 @@ export class AccommodationComponent implements OnInit {
   ngOnInit(): void {}
 
   onClickAccommodation() {
-    this.router.navigateByUrl(`hebergements/${this.accommodation.id}`);
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree([`hebergements/${this.accommodation.id}`])
+    );
+
+    window.open(url, '_blank');
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Accommodation } from '../models/accommodation.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
 @Injectable({
@@ -12,9 +12,9 @@ export class AccommodationListService {
 
   constructor(private http: HttpClient) {}
 
-  getAllAccommodations(): Observable<Accommodation[]> {
-    return this.http
-      .get<Accommodation[]>(`${this.accommodationUrl}`)
-      .pipe(map((value: any) => value['hydra:member']));
+  getAllAccommodations(page?: number): Observable<Accommodation[]> {
+    return this.http.get<Accommodation[]>(
+      `${this.accommodationUrl}?page=${page}`
+    );
   }
 }

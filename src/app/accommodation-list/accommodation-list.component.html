@@ -1,14 +1,18 @@
-<div class="container-accommodation">
+<div class="container-accommodation" target="_blank">
+  <button class="button-filter"></button>
   <app-accommodation
     *ngFor="let accommodation of accommodation$ | async"
     [accommodation]="accommodation"
   >
   </app-accommodation>
 </div>
+
 <mat-paginator
-  [length]="100"
+  class="paginator"
+  [length]="length"
   [pageSize]="10"
-  [pageSizeOptions]="[5, 10, 25, 100]"
+  (page)="onPageChange($event)"
+  [hidePageSize]="true"
   aria-label="Selectionnez une page"
 >
 </mat-paginator>

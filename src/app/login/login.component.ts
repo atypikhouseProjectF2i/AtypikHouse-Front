@@ -12,9 +12,14 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.connectForm = this.formBuilder.group({
-      email: [null, Validators.required],
-      password: [null, Validators.required],
-    });
+    this.connectForm = this.formBuilder.group(
+      {
+        email: [null, Validators.required],
+        password: [null, Validators.required],
+      },
+      {
+        updateOn: 'blur',
+      }
+    );
   }
 }

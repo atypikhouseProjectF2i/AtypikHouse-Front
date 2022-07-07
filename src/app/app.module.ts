@@ -15,7 +15,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AccommodationListComponent } from './accommodation-list/accommodation-list.component';
 import { SingleAccommodationComponent } from './single-accommodation/single-accommodation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import {
+  MatPaginatorIntl,
+  MatPaginatorModule,
+} from '@angular/material/paginator';
+import { getFrenchPaginator } from './paginator.personnalise';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     BrowserAnimationsModule,
     MatPaginatorModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MatPaginatorIntl,
+      useValue: getFrenchPaginator(),
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
