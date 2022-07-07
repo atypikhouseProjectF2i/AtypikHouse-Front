@@ -3,6 +3,23 @@
     src: url("assets/fonts/poppins-regular-webfont.woff") format("woff");
 }
 
+@font-face {
+    font-family: "Poppins";
+    src: url("assets/fonts/poppins-bold-webfont.woff") format("woff");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("assets/fonts/poppins-italic-webfont.woff") format("woff");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "helloalimedium";
+    src: url("assets/fonts/helloali-webfont.woff") format("woff");
+}
+
 * {
     font-family: Poppins, Roboto, sans-serif;
 }
