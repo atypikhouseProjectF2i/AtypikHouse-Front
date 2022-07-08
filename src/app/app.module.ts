@@ -20,6 +20,12 @@ import {
   MatPaginatorModule,
 } from '@angular/material/paginator';
 import { getFrenchPaginator } from './paginator.personnalise';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {
+  MatFormFieldModule,
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -41,11 +47,18 @@ import { getFrenchPaginator } from './paginator.personnalise';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
   ],
   providers: [
     {
       provide: MatPaginatorIntl,
       useValue: getFrenchPaginator(),
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'fill' },
     },
   ],
   bootstrap: [AppComponent],

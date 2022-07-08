@@ -11,24 +11,29 @@ import { AccommodationListService } from '../services/accommodations-list.servic
 export class AccommodationListComponent implements OnInit {
   accommodation$!: Observable<Accommodation[]>;
   length!: number;
+
   constructor(public accommodationService: AccommodationListService) {}
 
   ngOnInit(): void {
+    //display the accommodations on init of component
     this.accommodation$ = this.getData().pipe(
       map((value: any) => value['hydra:member'])
     );
 
+    //collect the total items for paginator
     this.getData().subscribe((response: any) => {
       this.length = response['hydra:totalItems'];
     });
   }
 
+  //function event on change page
   onPageChange(event: any): void {
     this.accommodation$ = this.getData(event.pageIndex + 1).pipe(
       map((value: any) => value['hydra:member'])
     );
   }
 
+  //function who recup the accommodation in the service
   getData(page: number = 1): Observable<Accommodation[]> {
     return this.accommodationService.getAllAccommodations(page);
   }

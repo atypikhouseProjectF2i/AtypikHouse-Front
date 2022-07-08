@@ -3,6 +3,7 @@
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
+    clear: both;
 }
 
 .paginator {
@@ -16,4 +17,31 @@
     padding: 20px;
     font-family: helloalimedium;
     text-align: center;
+}
+
+.button-filter {
+    float: right;
+    font-size: 16px;
+    margin: 10px 20px;
+    padding: 10px 20px;
+    background: #FFF;
+    border: 1px solid #000;
+    border-radius: 25px;
+}
+
+.bloc-filter {
+    clear: both;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+select {
+    margin: 50px 20px;
+    font-size: 16px;
+    border: 1px solid #000;
+    text-align: center;
+    border-radius: 25px;
+    width: 300px;
+    height: 50px;
 }
