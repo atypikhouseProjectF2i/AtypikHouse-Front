@@ -30,6 +30,15 @@
 }
 
 .bloc-filter {
+    transition: opacity 1s ease-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.bloc-filter-display {
+    opacity: 1;
+    height: auto;
     clear: both;
     display: flex;
     align-items: center;

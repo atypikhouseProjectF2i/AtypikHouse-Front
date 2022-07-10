@@ -11,6 +11,7 @@ import { AccommodationListService } from '../services/accommodations-list.servic
 export class AccommodationListComponent implements OnInit {
   accommodation$!: Observable<Accommodation[]>;
   length!: number;
+  displayFilter!: boolean;
 
   constructor(public accommodationService: AccommodationListService) {}
 
@@ -36,5 +37,14 @@ export class AccommodationListComponent implements OnInit {
   //function who recup the accommodation in the service
   getData(page: number = 1): Observable<Accommodation[]> {
     return this.accommodationService.getAllAccommodations(page);
+  }
+
+  //function on control display the filter
+  onClickFilter(): void {
+    if (this.displayFilter === true) {
+      this.displayFilter = false;
+    } else {
+      this.displayFilter = true;
+    }
   }
 }

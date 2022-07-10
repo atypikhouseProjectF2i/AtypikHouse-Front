@@ -1,5 +1,5 @@
 <h1 class="title-list-accommodation">NOS HEBERGEMENTS</h1>
-<button class="button-filter">
+<button class="button-filter" (click)="onClickFilter()">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -15,7 +15,10 @@
   </svg>
   Filtrer
 </button>
-<div class="bloc-filter">
+<div
+  class="bloc-filter"
+  [ngClass]="{ 'bloc-filter-display': displayFilter === true }"
+>
   <select name="destination" id="destination" class="destination-select">
     <option value="">Destination</option>
   </select>
