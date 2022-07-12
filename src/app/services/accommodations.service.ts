@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Accommodation } from '../models/accommodation.model';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AccommodationListService {
+export class AccommodationService {
   private accommodationUrl = 'http://localhost:8000/api/accommodations';
   listAccommodation!: Accommodation[];
 

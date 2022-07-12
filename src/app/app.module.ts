@@ -19,13 +19,18 @@ import {
   MatPaginatorIntl,
   MatPaginatorModule,
 } from '@angular/material/paginator';
-import { getFrenchPaginator } from './paginator.personnalise';
-import { MatNativeDateModule } from '@angular/material/core';
+import { getFrenchPaginator } from './personnalise/paginator.personnalise';
+import {
+  MatNativeDateModule,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+} from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
   MatFormFieldModule,
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
 } from '@angular/material/form-field';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +44,7 @@ import {
     FooterComponent,
     AccommodationListComponent,
     SingleAccommodationComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,8 +64,9 @@ import {
     },
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: 'fill' },
+      useValue: { appearance: 'standard' },
     },
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
   ],
   bootstrap: [AppComponent],
 })

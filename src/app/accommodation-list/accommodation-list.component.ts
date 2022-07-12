@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Accommodation } from '../models/accommodation.model';
-import { AccommodationListService } from '../services/accommodations-list.service';
+import { Region } from '../models/region.model';
+import { TypeAccommodation } from '../models/type-accommodation.model';
+import { AccommodationService } from '../services/accommodations.service';
+import { RegionService } from '../services/region.service';
+import { TypeAccommodationService } from '../services/type_accommodation.service';
 
 @Component({
   selector: 'app-accommodation-list',
@@ -10,16 +14,26 @@ import { AccommodationListService } from '../services/accommodations-list.servic
 })
 export class AccommodationListComponent implements OnInit {
   accommodation$!: Observable<Accommodation[]>;
+  region$!: Observable<Region[]>;
+  typeAccommodation$!: Observable<TypeAccommodation[]>;
   length!: number;
   displayFilter!: boolean;
 
-  constructor(public accommodationService: AccommodationListService) {}
+  constructor(
+    public accommodationService: AccommodationService,
+    public regionService: RegionService,
+    public typeAccommodationService: TypeAccommodationService
+  ) {}
 
   ngOnInit(): void {
     //display the accommodations on init of component
     this.accommodation$ = this.getData().pipe(
       map((value: any) => value['hydra:member'])
     );
+
+    //get the data for filter
+    this.region$ = this.getRegions();
+    this.typeAccommodation$ = this.getTypes();
 
     //collect the total items for paginator
     this.getData().subscribe((response: any) => {
@@ -46,5 +60,17 @@ export class AccommodationListComponent implements OnInit {
     } else {
       this.displayFilter = true;
     }
+  }
+
+  getRegions(): Observable<Region[]> {
+    return this.regionService
+      .getAllRegions()
+      .pipe(map((value: any) => value['hydra:member']));
+  }
+
+  getTypes(): Observable<TypeAccommodation[]> {
+    return this.typeAccommodationService
+      .getAllTypes()
+      .pipe(map((value: any) => value['hydra:member']));
   }
 }

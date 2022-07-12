@@ -21,6 +21,23 @@
 >
   <select name="destination" id="destination" class="destination-select">
     <option value="">Destination</option>
+    <option *ngFor="let region of region$ | async" [ngValue]="region">
+      {{ region.name }}
+    </option>
+  </select>
+
+  <select
+    name="type-accommodation"
+    id="type-accommodation"
+    class="type-accommodation-select"
+  >
+    <option value="">Type d'hébergement</option>
+    <option
+      *ngFor="let typeAccommodation of typeAccommodation$ | async"
+      [ngValue]="typeAccommodation"
+    >
+      {{ typeAccommodation.name | titlecase }}
+    </option>
   </select>
   <select
     name="type-accommodation"
@@ -28,7 +45,27 @@
     class="type-accommodation-select"
   >
     <option value="">Type d'hébergement</option>
+    <option
+      *ngFor="let typeAccommodation of typeAccommodation$ | async"
+      [ngValue]="typeAccommodation"
+    >
+      {{ typeAccommodation.name | titlecase }}
+    </option>
   </select>
+
+  <mat-form-field appearance="legacy" class="color">
+    <mat-label class="label-date">Date du séjour</mat-label>
+    <mat-date-range-input [rangePicker]="picker" class="color">
+      <input matStartDate />
+      <input matEndDate />
+    </mat-date-range-input>
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="picker"
+      class="color"
+    ></mat-datepicker-toggle>
+    <mat-date-range-picker #picker class="color"></mat-date-range-picker>
+  </mat-form-field>
 </div>
 
 <div class="container-accommodation" target="_blank">
