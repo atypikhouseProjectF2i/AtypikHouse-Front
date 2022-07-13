@@ -18,6 +18,9 @@ export class AccommodationListComponent implements OnInit {
   typeAccommodation$!: Observable<TypeAccommodation[]>;
   length!: number;
   displayFilter!: boolean;
+  capacityFilter!: boolean;
+  counterAdult: number = 0;
+  counterChild: number = 0;
 
   constructor(
     public accommodationService: AccommodationService,
@@ -53,15 +56,6 @@ export class AccommodationListComponent implements OnInit {
     return this.accommodationService.getAllAccommodations(page);
   }
 
-  //function on control display the filter
-  onClickFilter(): void {
-    if (this.displayFilter === true) {
-      this.displayFilter = false;
-    } else {
-      this.displayFilter = true;
-    }
-  }
-
   getRegions(): Observable<Region[]> {
     return this.regionService
       .getAllRegions()
@@ -72,5 +66,41 @@ export class AccommodationListComponent implements OnInit {
     return this.typeAccommodationService
       .getAllTypes()
       .pipe(map((value: any) => value['hydra:member']));
+  }
+
+  //funtions on DOM event
+
+  onClickFilter(): void {
+    if (this.displayFilter === true) {
+      this.displayFilter = false;
+    } else {
+      this.displayFilter = true;
+    }
+  }
+
+  onClickCapacity(): void {
+    if (this.capacityFilter === true) {
+      this.capacityFilter = false;
+    } else {
+      this.capacityFilter = true;
+    }
+  }
+
+  buttonCapacityChild(option: string, adultOrChild: string): void {
+    if (option === 'add' && adultOrChild === 'adult') {
+      this.counterAdult !== 10 ? this.counterAdult++ : this.counterAdult;
+    } else {
+      if (this.counterAdult !== 0 && adultOrChild === 'adult') {
+        this.counterAdult--;
+      }
+    }
+
+    if (option === 'add' && adultOrChild === 'child') {
+      this.counterChild !== 10 ? this.counterChild++ : this.counterChild;
+    } else {
+      if (this.counterChild !== 0 && adultOrChild === 'child') {
+        this.counterChild--;
+      }
+    }
   }
 }

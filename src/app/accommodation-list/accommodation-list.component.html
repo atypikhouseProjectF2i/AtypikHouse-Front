@@ -39,32 +39,93 @@
       {{ typeAccommodation.name | titlecase }}
     </option>
   </select>
-  <select
-    name="type-accommodation"
-    id="type-accommodation"
-    class="type-accommodation-select"
-  >
-    <option value="">Type d'hébergement</option>
-    <option
-      *ngFor="let typeAccommodation of typeAccommodation$ | async"
-      [ngValue]="typeAccommodation"
+  <div class="filter-capacity">
+    <label for="" class="label-capacity" (click)="onClickCapacity()">
+      Nombre de personnes
+    </label>
+    <div
+      class="display-capacity"
+      [ngClass]="{ 'display-capacity-active': capacityFilter === true }"
     >
-      {{ typeAccommodation.name | titlecase }}
-    </option>
-  </select>
+      <label for="">Adultes</label>
+      <button (click)="buttonCapacityChild('less', 'adult')">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-dash-circle"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+          />
+          <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+        </svg>
+      </button>
+      <span>{{ counterAdult }}</span>
+      <button (click)="buttonCapacityChild('add', 'adult')">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-plus-circle"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+          />
+          <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+          />
+        </svg>
+      </button>
+      <label for="">Enfants</label>
+      <button (click)="buttonCapacityChild('less', 'child')">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-dash-circle"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+          />
+          <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+        </svg>
+      </button>
+      <span>{{ counterChild }}</span>
+      <button (click)="buttonCapacityChild('add', 'child')">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-plus-circle"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+          />
+          <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
 
-  <mat-form-field appearance="legacy" class="color">
+  <mat-form-field appearance="legacy">
     <mat-label class="label-date">Date du séjour</mat-label>
     <mat-date-range-input [rangePicker]="picker" class="color">
       <input matStartDate />
       <input matEndDate />
     </mat-date-range-input>
-    <mat-datepicker-toggle
-      matSuffix
-      [for]="picker"
-      class="color"
-    ></mat-datepicker-toggle>
-    <mat-date-range-picker #picker class="color"></mat-date-range-picker>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
 </div>
 
