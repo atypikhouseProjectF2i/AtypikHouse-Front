@@ -36,6 +36,11 @@ img {
 }
 
 @media screen and (max-width: 790px) {
+    img {
+        padding: 20px;
+        width: 200px;
+    }
+
     .header {
         flex: none;
         display: block;
@@ -43,7 +48,8 @@ img {
 
         a {
             display: inline-block;
-            margin: 0 20px 5px 20px;
+            margin: 0 10px;
+            padding: 10px;
             white-space: nowrap;
         }
 
