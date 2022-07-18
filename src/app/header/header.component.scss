@@ -7,7 +7,7 @@
 
 img {
     padding: 20px;
-    width: 95px;
+    width: 125px;
 }
 
 
@@ -28,11 +28,22 @@ img {
         margin-right: 100px;
     }
 
+    :nth-child(4) {
+        &::after {
+            display: inline-block;
+            content: '|';
+            margin-left: 20px;
+            color: #333;
+            font-weight: 400;
+            text-decoration: none;
+        }
+    }
 
     .active {
         color: #155B1D;
         font-weight: 700;
     }
+
 }
 
 @media screen and (max-width: 790px) {

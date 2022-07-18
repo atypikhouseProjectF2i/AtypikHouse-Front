@@ -4,12 +4,39 @@
       <label for="email">Email</label>
       <input type="email" id="email" formControlName="email" />
     </div>
+    <div
+      *ngIf="submitted && connectForm.controls['email'].errors"
+      class="invalid-feedback"
+    >
+      <div
+        *ngIf="connectForm.controls['email'].errors?.['required']"
+        class="error-required"
+      >
+        E-mail obligatoire
+      </div>
+    </div>
     <div class="form-group">
       <label for="password">Mot de passe</label>
       <input type="password" id="password" formControlName="password" />
     </div>
+    <div
+      *ngIf="submitted && connectForm.controls['password'].errors"
+      class="invalid-feedback"
+    >
+      <div
+        *ngIf="connectForm.controls['password'].errors?.['required']"
+        class="error-required"
+      >
+        Mot de passe obligatoire
+      </div>
+    </div>
     <div class="action-button">
-      <button type="submit" class="button-connect">Se connecter</button>
+      <button type="submit" class="button-connect" (click)="onSubmit()">
+        Se connecter
+      </button>
     </div>
   </form>
+  <div class="forgot-password">
+    <a href="" class="forgot-password-link">Mot de passe oublié ?</a>
+  </div>
 </div>

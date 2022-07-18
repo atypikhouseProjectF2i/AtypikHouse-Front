@@ -11,7 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccommodationListComponent } from './accommodation-list/accommodation-list.component';
 import { SingleAccommodationComponent } from './single-accommodation/single-accommodation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,11 +20,7 @@ import {
   MatPaginatorModule,
 } from '@angular/material/paginator';
 import { getFrenchPaginator } from './personnalise/paginator.personnalise';
-import {
-  MatNativeDateModule,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-} from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
   MatFormFieldModule,
@@ -50,6 +46,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatPaginatorModule,

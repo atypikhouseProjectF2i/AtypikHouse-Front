@@ -6,8 +6,19 @@
     <a routerLink="hebergements" routerLinkActive="active">Hébergements</a>
     <a routerLink="hote" routerLinkActive="active">Devenir hôte</a>
     <a routerLink="contact" routerLinkActive="active">Contact</a>
-    <a routerLink="inscription" routerLinkActive="active">S'inscrire </a>
-    |
-    <a routerLink="connexion" routerLinkActive="active">Se connecter</a>
+
+    <a routerLink="inscription" routerLinkActive="active" *ngIf="token">
+      Mon Compte
+    </a>
+    <a routerLink="connexion" routerLinkActive="active" *ngIf="token"
+      >Se déconnecter</a
+    >
+
+    <a routerLink="inscription" routerLinkActive="active" *ngIf="!token"
+      >S'inscrire
+    </a>
+    <a routerLink="connexion" routerLinkActive="active" *ngIf="!token"
+      >Se connecter</a
+    >
   </nav>
 </header>

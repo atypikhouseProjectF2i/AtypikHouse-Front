@@ -1,7 +1,7 @@
 .form-card {
     width: 50%;
     margin: 100px auto;
-    padding: 10px 30px;
+    padding: 20px 30px;
     box-shadow: lightgray 4px 4px 20px;
 }
 
@@ -27,7 +27,7 @@ input {
     padding: 5px 10px;
     border: 1px solid;
     border-radius: 25px;
-    margin-right: 20px;
+    margin: 10px 20px;
     outline: none;
     font-size: 16px;
     font-weight: 500;
@@ -39,4 +39,20 @@ input {
     &:active {
         transform: translate(1px, 1px);
     }
+
+}
+
+.error-required {
+    color: #FF0000;
+}
+
+.forgot-password {
+    margin: 10px 0;
+
+    &-link {
+        text-decoration: none;
+        color: #0E402D;
+        font-weight: 700;
+    }
+
 }

@@ -5,7 +5,7 @@ import { Region } from '../models/region.model';
 import { TypeAccommodation } from '../models/type-accommodation.model';
 import { AccommodationService } from '../services/accommodations.service';
 import { RegionService } from '../services/region.service';
-import { TypeAccommodationService } from '../services/type_accommodation.service';
+import { TypeAccommodationService } from '../services/type-accommodation.service';
 
 @Component({
   selector: 'app-accommodation-list',
