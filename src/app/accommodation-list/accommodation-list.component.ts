@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, switchMap, tap } from 'rxjs';
 import { Accommodation } from '../models/accommodation.model';
 import { Region } from '../models/region.model';
 import { TypeAccommodation } from '../models/type-accommodation.model';
@@ -31,17 +31,13 @@ export class AccommodationListComponent implements OnInit {
   ngOnInit(): void {
     //display the accommodations on init of component
     this.accommodation$ = this.getData().pipe(
+      tap((response: any) => (this.length = response['hydra:totalItems'])),
       map((value: any) => value['hydra:member'])
     );
 
     //get the data for filter
     this.region$ = this.getRegions();
     this.typeAccommodation$ = this.getTypes();
-
-    //collect the total items for paginator
-    this.getData().subscribe((response: any) => {
-      this.length = response['hydra:totalItems'];
-    });
   }
 
   //function event on change page

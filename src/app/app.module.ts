@@ -27,6 +27,7 @@ import {
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
 } from '@angular/material/form-field';
 import { HomeComponent } from './home/home.component';
+import { httpInterceptorProviders } from './interceptors';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { HomeComponent } from './home/home.component';
       useValue: { appearance: 'standard' },
     },
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
+    httpInterceptorProviders,
   ],
   bootstrap: [AppComponent],
 })

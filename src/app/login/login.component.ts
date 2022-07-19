@@ -33,15 +33,6 @@ export class LoginComponent implements OnInit {
     if (this.connectForm.valid) {
       this.authService
         .signIn(this.connectForm.value.email, this.connectForm.value.password)
-        .pipe(
-          map((response: any) => {
-            if (response) {
-              console.log(response);
-            } else {
-              localStorage.setItem('jwt', JSON.stringify(response));
-            }
-          })
-        )
         .subscribe();
     }
   }

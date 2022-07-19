@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
-import { catchError, map, Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +12,14 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   signIn(username: string, password: string) {
-    return this.http.post(`${this.baseUrl}login`, { username, password });
+    return this.http.post(`${this.baseUrl}login`, { username, password }).pipe(
+      map((response: any) => {
+        localStorage.setItem('token', JSON.stringify(response.token));
+      })
+    );
   }
 
   getToken(): string | null {
-    return localStorage.getItem('jwt');
+    return localStorage.getItem('token');
   }
 }
