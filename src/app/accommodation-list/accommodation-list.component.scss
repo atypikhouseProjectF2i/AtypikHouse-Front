@@ -79,15 +79,15 @@ select {
     height: 50px;
 
     &::after {
-        content: '';
-        height: 0;
-        width: 0;
+        content: "";
         position: absolute;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 5px solid black;
-        top: 1.4em;
-        right: .3em;
+        top: 1.2em;
+        right: .25em;
+        border: solid black;
+        border-width: 0 1.5px 1.5px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
     }
 }
 
