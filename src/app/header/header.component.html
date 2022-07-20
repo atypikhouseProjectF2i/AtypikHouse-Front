@@ -7,10 +7,10 @@
     <a routerLink="hote" routerLinkActive="active">Devenir hôte</a>
     <a routerLink="contact" routerLinkActive="active">Contact</a>
 
-    <a routerLink="inscription" routerLinkActive="active" *ngIf="token">
+    <a routerLink="mon-compte" routerLinkActive="active" *ngIf="token">
       Mon Compte
     </a>
-    <a routerLink="connexion" routerLinkActive="active" *ngIf="token"
+    <a (click)="logout()" routerLink="" routerLinkActive="active" *ngIf="token"
       >Se déconnecter</a
     >
 

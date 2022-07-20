@@ -9,9 +9,17 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   token!: string | null;
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.token = this.authService.getToken();
+  }
+
+  logout(): void {
+    const token = this.authService.getToken();
+    if (token) {
+      localStorage.removeItem('token');
+      window.location.reload();
+    }
   }
 }

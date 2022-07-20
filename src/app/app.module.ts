@@ -28,6 +28,7 @@ import {
 } from '@angular/material/form-field';
 import { HomeComponent } from './home/home.component';
 import { httpInterceptorProviders } from './interceptors';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { httpInterceptorProviders } from './interceptors';
     AccommodationListComponent,
     SingleAccommodationComponent,
     HomeComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserModule,

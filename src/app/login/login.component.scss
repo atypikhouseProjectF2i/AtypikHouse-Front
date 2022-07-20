@@ -46,6 +46,10 @@ input {
     color: #FF0000;
 }
 
+.error-input {
+    border: 1.5px solid #FF0000;
+}
+
 .forgot-password {
     margin: 10px 0;
 
@@ -54,5 +58,8 @@ input {
         color: #0E402D;
         font-weight: 700;
     }
+}
 
+.toast-connect {
+    text-align: center;
 }

@@ -1,13 +1,17 @@
 <div class="form-card">
-  <form [formGroup]="connectForm">
+  <form [formGroup]="connectForm" *ngIf="!loggedIn">
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="email" formControlName="email" />
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        [ngClass]="{
+          'error-input': submitted && connectForm.controls['email'].errors
+        }"
+      />
     </div>
-    <div
-      *ngIf="submitted && connectForm.controls['email'].errors"
-      class="invalid-feedback"
-    >
+    <div *ngIf="submitted && connectForm.controls['email'].errors">
       <div
         *ngIf="connectForm.controls['email'].errors?.['required']"
         class="error-required"
@@ -17,12 +21,16 @@
     </div>
     <div class="form-group">
       <label for="password">Mot de passe</label>
-      <input type="password" id="password" formControlName="password" />
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        [ngClass]="{
+          'error-input': submitted && connectForm.controls['password'].errors
+        }"
+      />
     </div>
-    <div
-      *ngIf="submitted && connectForm.controls['password'].errors"
-      class="invalid-feedback"
-    >
+    <div *ngIf="submitted && connectForm.controls['password'].errors">
       <div
         *ngIf="connectForm.controls['password'].errors?.['required']"
         class="error-required"
@@ -35,8 +43,12 @@
         Se connecter
       </button>
     </div>
+    <div class="forgot-password">
+      <a href="" class="forgot-password-link">Mot de passe oublié ?</a>
+    </div>
   </form>
-  <div class="forgot-password">
-    <a href="" class="forgot-password-link">Mot de passe oublié ?</a>
+
+  <div class="toast-connect" *ngIf="loggedIn">
+    <p>Vous êtes bien connecté !</p>
   </div>
 </div>
