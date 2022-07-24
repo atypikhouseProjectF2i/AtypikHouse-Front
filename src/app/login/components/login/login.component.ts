@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { tap, window } from 'rxjs';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   connectForm!: FormGroup;
   submitted: boolean = false;
   loggedIn: boolean = false;
+  loggedFailed: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit {
       this.authService
         .signIn(this.connectForm.value.email, this.connectForm.value.password)
         .subscribe({
-          next: (value) => {
+          next: () => {
             this.loggedIn = true;
             location.reload();
 
@@ -50,8 +51,8 @@ export class LoginComponent implements OnInit {
             //   .getRoles()
             //   .pipe(tap((value) => console.log(value)));
           },
-          error: (err) => {
-            console.log(err.error.message);
+          error: () => {
+            this.loggedFailed = true;
           },
         });
     }

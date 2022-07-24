@@ -9,12 +9,13 @@ export class Accommodation {
   surface!: number;
   description!: string;
   address!: string;
-  zip_code!: string;
+  zipCode!: string;
   city!: string;
   region!: Region;
   nbSleeping!: number;
   capacityAdult!: number;
   capacityChild!: number;
+  imageUrl!: string;
   typeAccommodation!: TypeAccommodation;
   reviews!: Review[];
 }

@@ -1,8 +1,5 @@
 <div class="accommodation-bloc" (click)="onClickAccommodation()">
-  <img
-    src="https://source.unsplash.com/random/300×150"
-    [alt]="accommodation.name"
-  />
+  <img [src]="pathImage" [alt]="accommodation.name" />
   <p class="price">{{ accommodation.price }} € / nuit</p>
 
   <p class="accommodation-title">{{ accommodation.name | titlecase }}</p>

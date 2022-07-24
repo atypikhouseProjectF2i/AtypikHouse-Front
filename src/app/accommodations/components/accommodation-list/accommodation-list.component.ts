@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable, switchMap, tap } from 'rxjs';
-import { Accommodation } from '../models/accommodation.model';
-import { Region } from '../models/region.model';
-import { TypeAccommodation } from '../models/type-accommodation.model';
-import { AccommodationService } from '../services/accommodations.service';
-import { RegionService } from '../services/region.service';
-import { TypeAccommodationService } from '../services/type-accommodation.service';
+import { map, Observable, tap } from 'rxjs';
+import { Accommodation } from '../../../core/models/accommodation.model';
+import { Region } from '../../../core/models/region.model';
+import { TypeAccommodation } from '../../../core/models/type-accommodation.model';
+import { AccommodationService } from '../../../core/services/accommodation.service';
+import { RegionService } from '../../../core/services/region.service';
+import { TypeAccommodationService } from '../../../core/services/type-accommodation.service';
 
 @Component({
   selector: 'app-accommodation-list',

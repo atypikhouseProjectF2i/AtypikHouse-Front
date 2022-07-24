@@ -1,4 +1,9 @@
 <div class="form-card">
+  <div *ngIf="loggedFailed">
+    <div class="toast-error">
+      Echec de connexion : E-mail ou mot de passe incorrect
+    </div>
+  </div>
   <form [formGroup]="connectForm" *ngIf="!loggedIn">
     <div class="form-group">
       <label for="email">Email</label>
