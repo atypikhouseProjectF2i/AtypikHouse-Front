@@ -45,11 +45,11 @@ export class LoginComponent implements OnInit {
         .subscribe({
           next: () => {
             this.loggedIn = true;
-            location.reload();
-
-            // this.authService
-            //   .getRoles()
-            //   .pipe(tap((value) => console.log(value)));
+            this.authService.getRoles().subscribe({
+              next: () => {
+                location.reload();
+              },
+            });
           },
           error: () => {
             this.loggedFailed = true;

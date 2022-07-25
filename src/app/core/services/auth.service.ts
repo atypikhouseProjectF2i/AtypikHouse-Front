@@ -4,7 +4,7 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,19 +18,19 @@ export class AuthService {
   signIn(username: string, password: string) {
     return this.http.post(`${this.baseUrl}login`, { username, password }).pipe(
       map((response: any) => {
-        localStorage.setItem('token', JSON.stringify(response.token));
+        sessionStorage.setItem('token', JSON.stringify(response.token));
       })
     );
   }
 
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
 
   getRoles() {
-    return this.http.get(`${this.baseUrl}/roles`).pipe(
+    return this.http.get(`${this.baseUrl}me`).pipe(
       map((response: any) => {
-        response['hydra:member'];
+        sessionStorage.setItem('roles', JSON.stringify(response.roles));
       })
     );
   }

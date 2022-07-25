@@ -19,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const token = JSON.parse(this.auth.getToken() || '[]');
 
-    if (token !== '[]') {
+    if (token.length !== 0) {
       const headers = new HttpHeaders().append(
         'Authorization',
         `Bearer ${token}`

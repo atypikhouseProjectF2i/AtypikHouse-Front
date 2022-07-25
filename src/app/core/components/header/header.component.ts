@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -9,16 +8,22 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   token!: string | null;
-  constructor(private authService: AuthService, private router: Router) {}
+  roles!: any[];
+  admin: boolean = false;
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.token = this.authService.getToken();
+    this.roles = JSON.parse(sessionStorage.getItem('roles') || '[]');
+    this.roles.includes('ROLE_ADMIN')
+      ? (this.admin = true)
+      : (this.admin = false);
   }
 
   logout(): void {
     const token = this.authService.getToken();
     if (token) {
-      localStorage.removeItem('token');
+      sessionStorage.clear();
       window.location.reload();
     }
   }

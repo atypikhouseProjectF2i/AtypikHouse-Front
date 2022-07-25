@@ -3,14 +3,27 @@
     <a routerLink=""><img src="assets/images/logo.png" alt="logo" /></a>
   </div>
   <nav class="menu">
+    <a routerLink="admin" routerLinkActive="active" *ngIf="admin"
+      >Espace Admin</a
+    >
     <a routerLink="hebergements" routerLinkActive="active">Hébergements</a>
-    <a routerLink="hote" routerLinkActive="active">Devenir hôte</a>
-    <a routerLink="contact" routerLinkActive="active">Contact</a>
 
-    <a routerLink="mon-compte" routerLinkActive="active" *ngIf="token">
+    <a routerLink="hote" routerLinkActive="active" *ngIf="!admin"
+      >Devenir hôte</a
+    >
+    <a routerLink="contact" routerLinkActive="active" *ngIf="!admin">Contact</a>
+
+    <a
+      routerLink="mon-compte"
+      routerLinkActive="active"
+      *ngIf="token && !admin"
+    >
       Mon Compte
     </a>
-    <a (click)="logout()" routerLink="" *ngIf="token">Se déconnecter</a>
+
+    <a routerLink="deconnexion" (click)="logout()" *ngIf="token"
+      >Se déconnecter</a
+    >
 
     <a routerLink="inscription" routerLinkActive="active" *ngIf="!token"
       >S'inscrire
