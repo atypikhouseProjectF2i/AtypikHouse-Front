@@ -1,4 +1,4 @@
-<h1>Connexion</h1>
+<h1 *ngIf="!loggedIn">Connexion</h1>
 <div class="form-card">
   <div *ngIf="loggedFailed">
     <div class="toast-error">
@@ -53,8 +53,13 @@
       <a href="" class="forgot-password-link">Mot de passe oublié ?</a>
     </div>
   </form>
-
   <div class="toast-connect" *ngIf="loggedIn">
     <p>Vous êtes bien connecté !</p>
+  </div>
+</div>
+
+<div class="container-loader">
+  <div class="loader">
+    <mat-spinner *ngIf="loading$ | async"> </mat-spinner>
   </div>
 </div>

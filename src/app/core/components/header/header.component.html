@@ -2,6 +2,19 @@
   <div class="logo">
     <a routerLink=""><img src="assets/images/logo.png" alt="logo" /></a>
   </div>
+  <div class="menu-icon" (click)="displayMenu()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      class="bi bi-list"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+      />
+    </svg>
+  </div>
   <nav class="menu">
     <a routerLink="admin" routerLinkActive="active" *ngIf="admin"
       >Espace Admin</a
@@ -33,3 +46,26 @@
     >
   </nav>
 </header>
+
+<nav [@menuOpen]="isOpen ? 'open' : 'closed'" class="menu-responsive">
+  <a routerLink="admin" routerLinkActive="active" *ngIf="admin">Espace Admin</a>
+  <a routerLink="hebergements" routerLinkActive="active">Hébergements</a>
+
+  <a routerLink="hote" routerLinkActive="active" *ngIf="!admin">Devenir hôte</a>
+  <a routerLink="contact" routerLinkActive="active" *ngIf="!admin">Contact</a>
+
+  <a routerLink="mon-compte" routerLinkActive="active" *ngIf="token && !admin">
+    Mon Compte
+  </a>
+
+  <a routerLink="deconnexion" (click)="logout()" *ngIf="token"
+    >Se déconnecter</a
+  >
+
+  <a routerLink="inscription" routerLinkActive="active" *ngIf="!token"
+    >S'inscrire
+  </a>
+  <a routerLink="connexion" routerLinkActive="active" *ngIf="!token"
+    >Se connecter</a
+  >
+</nav>

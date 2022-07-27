@@ -10,8 +10,16 @@ img {
     width: 125px;
 }
 
+.menu-icon {
+    display: none;
+}
 
-.menu {
+.menu-responsive {
+    display: none;
+}
+
+.menu,
+.menu-responsive {
 
     a {
         margin: 0 10px;
@@ -47,26 +55,58 @@ img {
 
 }
 
-@media screen and (max-width: 790px) {
+@media screen and (max-width: 810px) {
+
     img {
         padding: 20px;
-        width: 200px;
+        width: 100px;
     }
 
-    .header {
-        flex: none;
-        display: block;
-        text-align: center;
+    .menu {
+        display: none;
+    }
 
-        a {
-            display: inline-block;
-            margin: 0 10px;
-            padding: 10px;
-            white-space: nowrap;
+    .menu-icon {
+        display: block;
+        margin-right: 20px;
+
+        svg {
+            width: 50px;
         }
+    }
+
+
+
+    .menu-responsive {
+        display: block;
+        background-color: #155B1D;
+        height: auto;
 
         :nth-child(3) {
-            margin: 0;
+            margin-right: 20px;
         }
+
+        .active {
+            color: #7A542E;
+            font-weight: 700;
+        }
+
+
+        a {
+            text-align: center;
+            color: #FFF;
+            display: block;
+            margin: 0 20px 10px 20px;
+            text-decoration: none;
+        }
+
+        :nth-child(4) {
+            &::after {
+                content: none;
+            }
+        }
+
     }
+
+
 }

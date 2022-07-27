@@ -120,7 +120,7 @@
 
   <mat-form-field appearance="legacy">
     <mat-label class="label-date">Date du séjour</mat-label>
-    <mat-date-range-input [rangePicker]="picker" class="color">
+    <mat-date-range-input [rangePicker]="picker">
       <input matStartDate />
       <input matEndDate />
     </mat-date-range-input>
@@ -130,6 +130,12 @@
 
   <div class="bloc-valid-filter">
     <button type="submit" class="button-valid-filter">Rechercher</button>
+  </div>
+</div>
+
+<div class="container-loader">
+  <div class="loader">
+    <mat-spinner *ngIf="loading$ | async"></mat-spinner>
   </div>
 </div>
 

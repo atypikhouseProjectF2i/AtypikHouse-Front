@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { Accommodation } from '../../../core/models/accommodation.model';
 import { Region } from '../../../core/models/region.model';
 import { TypeAccommodation } from '../../../core/models/type-accommodation.model';
@@ -21,11 +22,13 @@ export class AccommodationListComponent implements OnInit {
   capacityFilter!: boolean;
   counterAdult: number = 0;
   counterChild: number = 0;
+  loading$ = this.loader.loading$;
 
   constructor(
     public accommodationService: AccommodationService,
     public regionService: RegionService,
-    public typeAccommodationService: TypeAccommodationService
+    public typeAccommodationService: TypeAccommodationService,
+    private loader: LoadingService
   ) {}
 
   ngOnInit(): void {
@@ -65,7 +68,6 @@ export class AccommodationListComponent implements OnInit {
   }
 
   //funtions on DOM event
-
   onClickFilter(): void {
     if (this.displayFilter === true) {
       this.displayFilter = false;

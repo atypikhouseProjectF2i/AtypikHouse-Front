@@ -34,3 +34,16 @@ html,
 body {
     height: 100%;
 }
+
+.container-loader {
+    clear: both;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto 20px;
+}
+
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+    stroke: #0E402D;
+}

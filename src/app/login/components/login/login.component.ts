@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { tap, window } from 'rxjs';
+import { tap } from 'rxjs';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
@@ -18,8 +18,10 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private loader: LoadingService
   ) {}
+
+  loading$ = this.loader.loading$;
 
   ngOnInit(): void {
     if (this.authService.getToken() !== null) {
@@ -42,11 +44,13 @@ export class LoginComponent implements OnInit {
     if (this.connectForm.valid) {
       this.authService
         .signIn(this.connectForm.value.email, this.connectForm.value.password)
+        //.pipe(tap(() => {}) this.authService.getRoles().subscribe())
+
         .subscribe({
           next: () => {
-            this.loggedIn = true;
             this.authService.getRoles().subscribe({
               next: () => {
+                this.loggedIn = true;
                 location.reload();
               },
             });

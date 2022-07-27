@@ -1,3 +1,11 @@
+import {
+  animate,
+  query,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 
@@ -5,11 +13,33 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  animations: [
+    trigger('menuOpen', [
+      state(
+        'open',
+        style({
+          height: '170px',
+          opacity: 1,
+        })
+      ),
+      state(
+        'closed',
+        style({
+          height: '0',
+          opacity: 0,
+        })
+      ),
+      transition('open => closed', [animate('.5s')]),
+      transition('closed => open', [animate('.5s')]),
+    ]),
+  ],
 })
 export class HeaderComponent implements OnInit {
   token!: string | null;
   roles!: any[];
   admin: boolean = false;
+  isOpen: boolean = false;
+
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
@@ -26,5 +56,9 @@ export class HeaderComponent implements OnInit {
       sessionStorage.clear();
       window.location.reload();
     }
+  }
+
+  displayMenu() {
+    this.isOpen = !this.isOpen;
   }
 }
