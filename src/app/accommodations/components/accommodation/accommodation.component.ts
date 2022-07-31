@@ -11,11 +11,14 @@ import { AccommodationService } from '../../../core/services/accommodation.servi
 export class AccommodationComponent implements OnInit {
   @Input() accommodation!: Accommodation;
   pathImage!: string;
-  pathUrl: string = 'http://localhost:8000';
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private accommodationService: AccommodationService
+  ) {}
 
   ngOnInit(): void {
-    this.pathImage = this.pathUrl + this.accommodation.imageUrl;
+    this.pathImage =
+      this.accommodationService.pathImage + this.accommodation.imageUrl;
   }
 
   onClickAccommodation() {

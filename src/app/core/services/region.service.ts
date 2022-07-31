@@ -7,13 +7,13 @@ import { Region } from '../models/region.model';
   providedIn: 'root',
 })
 export class RegionService {
-  private baseUrl = 'http://localhost:8000/api/regions';
+  private baseUrl = 'http://localhost:8000/api';
 
   constructor(private http: HttpClient) {}
 
   region!: Region;
 
   getAllRegions(): Observable<Region[]> {
-    return this.http.get<Region[]>(`${this.baseUrl}`);
+    return this.http.get<Region[]>(`${this.baseUrl}/regions`);
   }
 }

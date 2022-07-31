@@ -7,13 +7,15 @@ import { TypeAccommodation } from '../models/type-accommodation.model';
   providedIn: 'root',
 })
 export class TypeAccommodationService {
-  private baseUrl = 'http://localhost:8000/api/type_accommodations';
+  private baseUrl = 'http://localhost:8000/api';
 
   constructor(private http: HttpClient) {}
 
   typeAccommodation!: TypeAccommodation;
 
   getAllTypes(): Observable<TypeAccommodation[]> {
-    return this.http.get<TypeAccommodation[]>(`${this.baseUrl}`);
+    return this.http.get<TypeAccommodation[]>(
+      `${this.baseUrl}/type_accommodations`
+    );
   }
 }
