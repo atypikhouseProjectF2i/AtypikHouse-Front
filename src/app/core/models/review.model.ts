@@ -1,5 +1,5 @@
-export type Review = {
-  id: number;
-  comment: string;
-  score: number;
-};
+export class Review {
+  id!: number;
+  comment!: string;
+  score!: number;
+}
