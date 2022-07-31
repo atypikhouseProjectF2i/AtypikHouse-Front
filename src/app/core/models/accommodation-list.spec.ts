@@ -4,7 +4,6 @@ import { Accommodation } from 'src/app/core/models/accommodation.model';
 import { Region } from 'src/app/core/models/region.model';
 import { TypeAccommodation } from 'src/app/core/models/type-accommodation.model';
 import { AccommodationService } from 'src/app/core/services/accommodation.service';
-import { asyncData, asyncError } from 'src/testing/async-observable-helpers';
 
 let httpClientSpy: jasmine.SpyObj<HttpClient>;
 let accommodationService: AccommodationService;
