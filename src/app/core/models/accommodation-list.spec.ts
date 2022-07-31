@@ -1,4 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { defer } from 'rxjs';
 import { Accommodation } from 'src/app/core/models/accommodation.model';
 import { Region } from 'src/app/core/models/region.model';
 import { TypeAccommodation } from 'src/app/core/models/type-accommodation.model';
@@ -57,8 +58,9 @@ it('should return expected accommodations (HttpClient called once)', (done: Done
       ],
     },
   ];
-
-  httpClientSpy.get.and.returnValue(asyncData(expectedAccommodation));
+  httpClientSpy.get.and.returnValue(
+    defer(() => Promise.resolve(expectedAccommodation))
+  );
 
   accommodationService.getAllAccommodations().subscribe({
     next: (accommodations) => {
@@ -79,7 +81,7 @@ it('should return an error when the server returns a 404', (done: DoneFn) => {
     statusText: 'Not Found',
   });
 
-  httpClientSpy.get.and.returnValue(asyncError(errorResponse));
+  httpClientSpy.get.and.returnValue(defer(() => Promise.reject(errorResponse)));
 
   accommodationService.getAllAccommodations().subscribe({
     next: (accommodations) =>
