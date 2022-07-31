@@ -1,5 +1,4 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { of } from 'rxjs';
 import { Accommodation } from 'src/app/core/models/accommodation.model';
 import { Region } from 'src/app/core/models/region.model';
 import { TypeAccommodation } from 'src/app/core/models/type-accommodation.model';
