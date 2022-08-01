@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { tap } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { AuthService } from '../../../core/services/auth.service';
 
@@ -14,11 +14,13 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
   loggedIn: boolean = false;
   loggedFailed: boolean = false;
+  successAccount!: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private loader: LoadingService
+    private loader: LoadingService,
+    private route: ActivatedRoute
   ) {}
 
   loading$ = this.loader.loading$;
@@ -37,6 +39,8 @@ export class LoginComponent implements OnInit {
         updateOn: 'blur',
       }
     );
+
+    this.successAccount = this.route.snapshot.paramMap.get('successAccount');
   }
 
   onSubmit(): void {
@@ -44,8 +48,6 @@ export class LoginComponent implements OnInit {
     if (this.connectForm.valid) {
       this.authService
         .signIn(this.connectForm.value.email, this.connectForm.value.password)
-        //.pipe(tap(() => {}) this.authService.getRoles().subscribe())
-
         .subscribe({
           next: () => {
             this.authService.getRoles().subscribe({

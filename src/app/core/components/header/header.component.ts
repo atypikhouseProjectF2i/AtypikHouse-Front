@@ -19,14 +19,14 @@ import { AuthService } from '../../services/auth.service';
         'open',
         style({
           height: '170px',
-          opacity: 1,
+          visibility: 'visible',
         })
       ),
       state(
         'closed',
         style({
           height: '0',
-          opacity: 0,
+          visibility: 'hidden',
         })
       ),
       transition('open => closed', [animate('.5s')]),

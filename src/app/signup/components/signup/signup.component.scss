@@ -1,0 +1,142 @@
+h1 {
+    text-align: center;
+    margin: 20px auto;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.form-card {
+    width: 80%;
+    margin: 20px auto 70px;
+    padding: 10px 30px;
+    box-shadow: lightgray 4px 4px 20px;
+
+    .action-button {
+        text-align: center;
+    }
+}
+
+.form-group {
+    margin: 20px auto;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+        width: 50%;
+    }
+
+    input {
+        width: 50%;
+    }
+
+    input[type='checkbox'] {
+        width: 50px;
+    }
+
+    label::after {
+        content: '*';
+        color: #FF0000;
+    }
+
+    label[for=newsletter]::after {
+        content: '';
+    }
+
+
+}
+
+.button-signup {
+    background: #7A542E;
+    color: #FFF;
+    padding: 5px 10px;
+    border: 1px solid;
+    border-radius: 25px;
+    margin: 10px 20px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 500;
+
+    &:hover {
+        background: #0E402D;
+    }
+
+    &:active {
+        transform: translate(1px, 1px);
+    }
+
+}
+
+.error-required {
+    margin: 10px 20px;
+    color: #FF0000;
+    width: 30%;
+}
+
+.error-input {
+    border: 1.5px solid #FF0000;
+}
+
+.forgot-password {
+    margin: 10px 5px;
+
+    &-link {
+        text-decoration: none;
+        color: #0E402D;
+        font-weight: 700;
+    }
+}
+
+.toast-connect {
+    text-align: center;
+}
+
+.toast-error {
+    text-align: center;
+    margin: 20px 0;
+    color: #FF0000;
+    font-size: 18px;
+}
+
+
+.alert-success {
+    margin: 20px auto;
+    width: 60%;
+    text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+
+    .form-group {
+        flex: none;
+        display: block;
+        margin: 0 auto;
+
+        label {
+            display: block;
+            width: 100px;
+        }
+
+        input {
+            width: 300px;
+            margin: 20px 0;
+
+        }
+    }
+
+    .form-card {
+        width: 100%;
+        padding: 20px 0;
+    }
+
+    .error-required {
+        margin: 10px 0 20px;
+        color: #FF0000;
+        width: 80px;
+    }
+
+}

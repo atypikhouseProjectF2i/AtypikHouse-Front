@@ -1,1 +1,170 @@
-<p>signup works!</p>
+<h1>S'inscrire</h1>
+
+<div class="form-card" *ngIf="!isSuccessful">
+  <form [formGroup]="signupForm">
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input
+        type="text"
+        formControlName="name"
+        id="name"
+        [ngClass]="{
+          'error-input': submitted && signupForm.controls['name'].errors
+        }"
+      />
+      <div
+        *ngIf="submitted && signupForm.controls['name'].errors"
+        class="error-required"
+      >
+        <div *ngIf="signupForm.controls['name'].errors?.['required']">
+          Nom obligatoire
+        </div>
+        <div *ngIf="signupForm.controls['name'].errors?.['minlength']">
+          Nom trop court
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="firstname">Prénom</label>
+      <input
+        type="text"
+        formControlName="firstname"
+        id="firstname"
+        [ngClass]="{
+          'error-input': submitted && signupForm.controls['firstname'].errors
+        }"
+      />
+      <div
+        *ngIf="submitted && signupForm.controls['name'].errors"
+        class="error-required"
+      >
+        <div *ngIf="signupForm.controls['firstname'].errors?.['required']">
+          Prénom obligatoire
+        </div>
+        <div *ngIf="signupForm.controls['firstname'].errors?.['minlength']">
+          Prénom trop court
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Téléphone</label>
+      <input
+        type="text"
+        formControlName="phone"
+        id="phone"
+        [ngClass]="{
+          'error-input': submitted && signupForm.controls['phone'].errors
+        }"
+      />
+      <div
+        *ngIf="submitted && signupForm.controls['phone'].errors"
+        class="error-required"
+      >
+        <div *ngIf="signupForm.controls['phone'].errors?.['required']">
+          N° de téléphone obligatoire
+        </div>
+        <div *ngIf="signupForm.controls['phone'].errors?.['pattern']">
+          Mauvais format de téléphone
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        [ngClass]="{
+          'error-input':
+            (submitted && signupForm.controls['email'].errors) ||
+            emailAlreadyUsed
+        }"
+      />
+      <div
+        *ngIf="
+          (submitted && signupForm.controls['email'].errors) || emailAlreadyUsed
+        "
+        class="error-required"
+      >
+        <div *ngIf="signupForm.controls['email'].errors?.['required']">
+          E-mail obligatoire
+        </div>
+        <div *ngIf="signupForm.controls['email'].errors?.['email']">
+          Mauvais format d'email
+        </div>
+        <div *ngIf="emailAlreadyUsed">Email déjà utilisé</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        [ngClass]="{
+          'error-input': submitted && signupForm.controls['password'].errors
+        }"
+      />
+      <div
+        *ngIf="submitted && signupForm.controls['password'].errors"
+        class="error-required"
+      >
+        <div *ngIf="signupForm.controls['password'].errors?.['required']">
+          Mot de passe obligatoire
+        </div>
+        <div *ngIf="signupForm.controls['password'].errors?.['minlength']">
+          Mot de passe trop court
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="checkbox" id="newsletter" formControlName="newsletter" />
+      <label for="newsletter">S'abonner à la newsteller</label>
+
+      <input
+        type="checkbox"
+        id="termCondition"
+        formControlName="termCondition"
+        [ngClass]="{
+          'error-input':
+            submitted && signupForm.controls['termCondition'].errors
+        }"
+      />
+      <label for="termCondition"
+        >J'accepte les Conditions générales d'utilisation</label
+      >
+
+      <div
+        *ngIf="submitted && signupForm.controls['termCondition'].errors"
+        class="error-required"
+      >
+        <div *ngIf="signupForm.controls['termCondition'].errors?.['required']">
+          Veuillez accepter les conditions générales d'utilisation
+        </div>
+        <div *ngIf="signupForm.controls['termCondition'].errors?.['minlength']">
+          Mot de passe trop court
+        </div>
+      </div>
+    </div>
+
+    <div class="action-button">
+      <button type="submit" class="button-signup" (click)="onSubmit()">
+        Créer un compte
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="alert alert-success" *ngIf="isSuccessful">
+  Vous êtes bien inscrit !
+</div>
+
+<div class="container-loader">
+  <div class="loader">
+    <mat-spinner *ngIf="loading$ | async"></mat-spinner>
+  </div>
+</div>

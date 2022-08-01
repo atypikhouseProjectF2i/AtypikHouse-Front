@@ -6,5 +6,5 @@ export class User {
   password!: string;
   phone!: string;
   newsletter!: boolean;
-  roles!: JSON;
+  roles?: JSON;
 }

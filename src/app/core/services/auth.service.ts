@@ -5,6 +5,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, switchMap } from 'rxjs';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -33,5 +34,16 @@ export class AuthService {
         sessionStorage.setItem('roles', JSON.stringify(response.roles));
       })
     );
+  }
+
+  signUp(formValueUser: {
+    name: string;
+    firstname: string;
+    email: string;
+    password: string;
+    phone: string;
+    newsletter: string;
+  }) {
+    return this.http.post(`${this.baseUrl}/users`, formValueUser);
   }
 }

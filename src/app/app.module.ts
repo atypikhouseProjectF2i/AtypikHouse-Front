@@ -10,6 +10,7 @@ import { LoginModule } from './login/login.module';
 import { HomeModule } from './home/home.module';
 import { AccountModule } from './account/account.module';
 import { ContactModule } from './contact/contact.module';
+import { SignupModule } from './signup/signup.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { ContactModule } from './contact/contact.module';
     AccommodationsModule,
     HostModule,
     LoginModule,
+    SignupModule,
     AccountModule,
     ContactModule,
   ],
