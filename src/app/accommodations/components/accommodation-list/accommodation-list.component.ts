@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { Accommodation } from '../../../core/models/accommodation.model';

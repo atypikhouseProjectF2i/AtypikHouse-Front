@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AccommodationService {
-  private accommodationUrl = 'http://localhost:8000/api';
+  private baseUrl = 'http://localhost:8000/api';
   pathImage = 'http://localhost:8000/';
   listAccommodation!: Accommodation[];
 
@@ -15,7 +15,11 @@ export class AccommodationService {
 
   getAllAccommodations(page?: number): Observable<Accommodation[]> {
     return this.http.get<Accommodation[]>(
-      `${this.accommodationUrl}/accommodations/?page=${page}`
+      `${this.baseUrl}/accommodations/?page=${page}`
     );
+  }
+
+  getAccommodationById(id: number): Observable<Accommodation> {
+    return this.http.get<Accommodation>(`${this.baseUrl}/accommodations/${id}`);
   }
 }

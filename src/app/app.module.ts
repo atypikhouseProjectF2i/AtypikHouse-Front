@@ -16,7 +16,7 @@ import { SignupModule } from './signup/signup.module';
   declarations: [AppComponent],
   imports: [
     BrowserAnimationsModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     CoreModule,
     HomeModule,

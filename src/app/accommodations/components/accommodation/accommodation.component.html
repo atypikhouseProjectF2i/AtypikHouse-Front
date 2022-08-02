@@ -6,6 +6,6 @@
   <p class="accommodation-region">
     {{ accommodation.region.name | titlecase }}
   </p>
-  <p class="accommodation-review">{{ accommodation.reviews.length }} avis</p>
+  <p class="accommodation-review">{{ accommodation.reviews?.length }} avis</p>
   <p class="accomodation-description">{{ accommodation.description }}</p>
 </div>

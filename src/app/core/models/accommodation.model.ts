@@ -1,6 +1,7 @@
 import { Review } from './review.model';
 import { TypeAccommodation } from './type-accommodation.model';
 import { Region } from './region.model';
+import { Activity } from './activity.model';
 
 export class Accommodation {
   id!: number;
@@ -16,6 +17,7 @@ export class Accommodation {
   capacityAdult!: number;
   capacityChild!: number;
   imageUrl!: string;
-  typeAccommodation!: TypeAccommodation;
-  reviews!: Review[];
+  typeAccommodation?: TypeAccommodation;
+  reviews?: Review[];
+  activity?: Activity[];
 }

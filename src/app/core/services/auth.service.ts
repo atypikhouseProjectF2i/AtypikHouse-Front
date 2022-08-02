@@ -4,8 +4,7 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, switchMap } from 'rxjs';
-import { User } from '../models/user.model';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

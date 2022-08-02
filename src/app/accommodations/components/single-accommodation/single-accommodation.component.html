@@ -1,1 +1,54 @@
-<p>single-accommodation works!</p>
+<div class="accommodation-card" *ngIf="accommodation$ | async as accommodation">
+  <img [src]="pathImage + accommodation.imageUrl" [alt]="accommodation.name" />
+
+  <div class="accommodation-container">
+    <div class="accommodation-title">
+      <h3>
+        {{ accommodation.name }}
+      </h3>
+      <p>{{ accommodation.price }} € / nuit</p>
+      <button class="button-booking">Réserver</button>
+    </div>
+
+    <div class="accommodation-description">
+      <p>
+        <span>Description :</span>
+        {{ accommodation.description }}
+      </p>
+      <p>
+        <span>Surface :</span>
+        {{ accommodation.surface }} m²
+      </p>
+      <p>
+        <span>Type :</span>
+        {{ accommodation.typeAccommodation?.name | titlecase }}
+      </p>
+      <p>
+        <span>Région :</span>
+        {{ accommodation.region.name | titlecase }}
+      </p>
+      <p>
+        <span>Nombre de couchages :</span>
+        {{ accommodation.nbSleeping }}
+      </p>
+      <p>
+        <span>Capacités adultes :</span>
+        {{ accommodation.capacityAdult }}
+      </p>
+      <p>
+        <span>Capacités enfants :</span>
+        {{ accommodation.capacityChild }}
+      </p>
+      <p>
+        <span>Activités :</span>
+        <b *ngFor="let activity of accommodation.activity; let i = index">
+          {{ activity.name | titlecase
+          }}<b *ngIf="i + 1 === accommodation.activity?.length; else ElseBlock"
+            >.</b
+          >
+          <ng-template #ElseBlock>,</ng-template>
+        </b>
+      </p>
+    </div>
+  </div>
+</div>
