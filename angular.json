@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "atypikhouse"
+  "defaultProject": "atypikhouse",
+  "cli": {
+    "analytics": "88a1f596-39b7-4755-aac0-987263c14cb9"
+  }
 }
