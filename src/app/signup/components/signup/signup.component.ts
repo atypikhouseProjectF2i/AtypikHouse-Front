@@ -55,7 +55,6 @@ export class SignupComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
     if (this.signupForm.valid) {
-      console.log(this.signupForm.value);
       this.authService.signUp(this.signupForm.value).subscribe({
         next: () => {
           this.isSuccessful = true;
