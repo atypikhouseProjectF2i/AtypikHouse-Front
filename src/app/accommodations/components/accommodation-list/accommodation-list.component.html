@@ -37,12 +37,12 @@
     </option>
   </select>
   <div class="filter-capacity">
-    <label for="" class="label-capacity" (click)="onClickCapacity()">
+    <label for="" class="label-capacity" (click)="displayCapacity()">
       Nombre de personnes
     </label>
     <div
       class="display-capacity"
-      [ngClass]="{ 'display-capacity-active': capacityFilter === true }"
+      [@capacityOpen]="isOpenCapacity ? 'open' : 'closed'"
     >
       <label for="">Adultes</label>
       <button (click)="buttonCapacityChild('less', 'adult')">

@@ -24,7 +24,6 @@ import { TypeAccommodationService } from '../../../core/services/type-accommodat
       state(
         'open',
         style({
-          height: '400px',
           visibility: 'visible',
         })
       ),
@@ -38,6 +37,23 @@ import { TypeAccommodationService } from '../../../core/services/type-accommodat
       transition('open => closed', [animate('.5s')]),
       transition('closed => open', [animate('.5s')]),
     ]),
+
+    trigger('capacityOpen', [
+      state(
+        'open',
+        style({
+          height: '100px',
+          visibility: 'visible',
+        })
+      ),
+      state(
+        'closed',
+        style({
+          height: '0',
+          visibility: 'hidden',
+        })
+      ),
+    ]),
   ],
 })
 export class AccommodationListComponent implements OnInit {
@@ -46,6 +62,7 @@ export class AccommodationListComponent implements OnInit {
   typeAccommodation$!: Observable<TypeAccommodation[]>;
   length!: number;
   isOpen: boolean = false;
+  isOpenCapacity: boolean = false;
   capacityFilter!: boolean;
   counterAdult: number = 0;
   counterChild: number = 0;
@@ -103,6 +120,10 @@ export class AccommodationListComponent implements OnInit {
 
   displayMenu() {
     this.isOpen = !this.isOpen;
+  }
+
+  displayCapacity() {
+    this.isOpenCapacity = !this.isOpenCapacity;
   }
 
   onClickCapacity(): void {

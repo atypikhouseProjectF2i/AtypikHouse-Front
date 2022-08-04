@@ -37,8 +37,6 @@
     padding: 20px 0;
 }
 
-
-
 select {
     margin: 50px 20px;
     font-size: 16px;
@@ -84,49 +82,39 @@ select {
 }
 
 .display-capacity {
-    visibility: hidden;
     background: #FFF;
     border: 1px solid #000;
     border-radius: 15px;
     position: relative;
     top: 107%;
     padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 300px;
 
+    label {
+        width: 40%;
+    }
 
+    input {
+        width: 50%;
+    }
+
+    button {
+        background: none;
+        border: none;
+        opacity: .5;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
 
     & input:nth-child(2) {
         margin-bottom: 10px;
     }
-
-    &-active {
-        visibility: visible;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-        width: 300px;
-        height: auto;
-
-        label {
-            width: 40%;
-        }
-
-        input {
-            width: 50%;
-        }
-
-        button {
-            background: none;
-            border: none;
-            opacity: .5;
-
-            &:hover {
-                opacity: 1;
-            }
-        }
-    }
-
-
 }
 
 .label-capacity {
@@ -160,5 +148,11 @@ select {
 
     &:active {
         transform: translate(1px, 1px);
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .filter-capacity {
+        margin: 50px 20px 100px;
     }
 }
