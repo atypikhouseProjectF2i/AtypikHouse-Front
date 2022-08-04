@@ -15,6 +15,7 @@ export class SingleAccommodationComponent implements OnInit {
   pathImage!: string;
   totalReview: number = 0;
   reviewForm!: FormGroup;
+  isConnect: boolean = false;
 
   constructor(
     private activedRoute: ActivatedRoute,
@@ -56,7 +57,16 @@ export class SingleAccommodationComponent implements OnInit {
     if (sessionStorage.getItem('roles') !== null) {
       console.log(this.reviewForm.value);
     } else {
-      alert('vous devez être connecté !');
+      alert('vous devez être connecté pour poster en commentaire !');
     }
+  }
+
+  isLogged(): boolean {
+    if (sessionStorage.getItem('roles') === null) {
+      this.isConnect = false;
+    } else {
+      this.isConnect = true;
+    }
+    return this.isConnect;
   }
 }
