@@ -20,6 +20,13 @@
     src: url("assets/fonts/helloali-webfont.woff") format("woff");
 }
 
+$color-negative-rating: #FFC058 !default;
+$color-ok-rating: #FFC058 !default;
+$color-positive-rating: #FFC058 !default;
+$color-default-rating: #FFC058 !default;
+
+@import '~css-star-rating/scss/star-rating';
+
 * {
     font-family: Poppins, Roboto, sans-serif;
     box-sizing: border-box;
@@ -46,4 +53,8 @@ body {
 .mat-progress-spinner circle,
 .mat-spinner circle {
     stroke: #0E402D;
+}
+
+h1 {
+    font-family: helloalimedium, Roboto, sans-serif;
 }

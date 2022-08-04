@@ -10,7 +10,7 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:8000/api';
+  private baseUrl = 'https://dsp-devo20-ecs-yl-am-ee.fr/api/public/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) {}

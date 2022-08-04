@@ -7,6 +7,12 @@
         {{ accommodation.name }}
       </h3>
       <p>{{ accommodation.price }} € / nuit</p>
+      <star-rating
+        [starType]="'svg'"
+        [rating]="totalReview"
+        class="rating"
+        [readOnly]="true"
+      ></star-rating>
       <button class="button-booking">Réserver</button>
     </div>
 
@@ -40,15 +46,71 @@
         {{ accommodation.capacityChild }}
       </p>
       <p>
-        <span>Activités :</span>
+        <span>Activités : </span>
+        <b *ngIf="accommodation.activity?.length === 0">Aucune activités</b>
         <b *ngFor="let activity of accommodation.activity; let i = index">
           {{ activity.name | titlecase
-          }}<b *ngIf="i + 1 === accommodation.activity?.length; else ElseBlock"
+          }}<b
+            *ngIf="
+              i + 1 === accommodation.activity?.length;
+              else ElseBlockActivity
+            "
             >.</b
           >
-          <ng-template #ElseBlock>,</ng-template>
+          <ng-template #ElseBlockActivity>,</ng-template>
+        </b>
+      </p>
+      <p>
+        <span>Services : </span>
+        <b *ngIf="accommodation.service?.length === 0">Aucun services</b>
+        <b *ngFor="let service of accommodation.service; let i = index">
+          {{ service.name | titlecase
+          }}<b
+            *ngIf="
+              i + 1 === accommodation.service?.length;
+              else ElseBlockService
+            "
+            >.</b
+          >
+          <ng-template #ElseBlockService>,</ng-template>
+        </b>
+      </p>
+      <p>
+        <span>Equipements : </span>
+        <b *ngIf="accommodation.equipement?.length === 0">Aucun équipements</b>
+        <b *ngFor="let equipement of accommodation.equipement; let i = index">
+          {{ equipement.name | titlecase
+          }}<b
+            *ngIf="
+              i + 1 === accommodation.equipement?.length;
+              else ElseBlockEquipement
+            "
+            >.</b
+          >
+          <ng-template #ElseBlockEquipement>,</ng-template>
         </b>
       </p>
     </div>
+  </div>
+
+  <div class="comment">
+    <h3>Ecrire un commentaire</h3>
+    <form [formGroup]="reviewForm">
+      <star-rating-control
+        [starType]="'svg'"
+        [rating]="2.63"
+        class="rating"
+        formControlName="score"
+      ></star-rating-control>
+      <textarea
+        name=""
+        id=""
+        cols="100"
+        rows="5"
+        placeholder="Laisser un commentaire !"
+        formControlName="comment"
+      ></textarea>
+      <button class="button-comment" (click)="submitReview()">Envoyer</button>
+    </form>
   </div>
 </div>

@@ -15,7 +15,6 @@
 
 .title-list-accommodation {
     padding: 20px;
-    font-family: helloalimedium, Poppins, sans-serif;
     text-align: center;
 }
 
@@ -30,22 +29,15 @@
 }
 
 .bloc-filter {
-    transition: opacity 1s ease-out;
-    opacity: 0;
-    height: 0;
-    overflow: hidden;
-}
-
-.bloc-filter-display {
-    opacity: 1;
-    height: auto;
     clear: both;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    padding: 30px 0;
+    padding: 20px 0;
 }
+
+
 
 select {
     margin: 50px 20px;

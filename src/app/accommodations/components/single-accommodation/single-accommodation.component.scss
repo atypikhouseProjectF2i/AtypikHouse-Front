@@ -1,3 +1,7 @@
+h3 {
+    color: #0E402D;
+}
+
 .accommodation-card {
     margin: 0 auto 20px;
 
@@ -14,8 +18,6 @@
     display: flex;
     justify-content: space-around;
     color: #0E402D;
-
-
 }
 
 .accommodation-title {
@@ -42,7 +44,8 @@
     }
 }
 
-.button-booking {
+.button-booking,
+.button-comment {
     background: #7A542E;
     color: #FFF;
     padding: 5px 10px;
@@ -60,5 +63,33 @@
 
     &:active {
         transform: translate(1px, 1px);
+    }
+}
+
+
+
+.comment {
+    width: 80%;
+    margin: 50px auto;
+
+    h3 {
+        text-align: left;
+    }
+
+    textarea {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    button {
+        display: block;
+        margin: 10px auto;
+    }
+
+    .rating {
+        justify-content: left;
+        font-size: 26px;
+        margin: 20px 0;
     }
 }

@@ -1,6 +1,5 @@
 import {
   animate,
-  query,
   state,
   style,
   transition,
@@ -27,9 +26,10 @@ import { AuthService } from '../../services/auth.service';
         style({
           height: '0',
           visibility: 'hidden',
+          backgroundColor: 'white',
         })
       ),
-      transition('open => closed', [animate('.5s')]),
+      transition('open => closed', [animate('.3s')]),
       transition('closed => open', [animate('.5s')]),
     ]),
   ],

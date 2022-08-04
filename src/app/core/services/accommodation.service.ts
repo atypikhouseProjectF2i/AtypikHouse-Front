@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AccommodationService {
-  private baseUrl = 'http://localhost:8000/api';
-  pathImage = 'http://localhost:8000/';
+  private baseUrl = 'https://dsp-devo20-ecs-yl-am-ee.fr/api/public/api';
+  pathImage = 'https://dsp-devo20-ecs-yl-am-ee.fr/api/public/';
   listAccommodation!: Accommodation[];
 
   constructor(private http: HttpClient) {}

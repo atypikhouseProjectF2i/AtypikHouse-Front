@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { Accommodation } from '../../../core/models/accommodation.model';
@@ -12,13 +19,33 @@ import { TypeAccommodationService } from '../../../core/services/type-accommodat
   selector: 'app-accommodation-list',
   templateUrl: './accommodation-list.component.html',
   styleUrls: ['./accommodation-list.component.scss'],
+  animations: [
+    trigger('filterOpen', [
+      state(
+        'open',
+        style({
+          height: '400px',
+          visibility: 'visible',
+        })
+      ),
+      state(
+        'closed',
+        style({
+          height: '0',
+          visibility: 'hidden',
+        })
+      ),
+      transition('open => closed', [animate('.5s')]),
+      transition('closed => open', [animate('.5s')]),
+    ]),
+  ],
 })
 export class AccommodationListComponent implements OnInit {
   accommodation$!: Observable<Accommodation[]>;
   region$!: Observable<Region[]>;
   typeAccommodation$!: Observable<TypeAccommodation[]>;
   length!: number;
-  displayFilter!: boolean;
+  isOpen: boolean = false;
   capacityFilter!: boolean;
   counterAdult: number = 0;
   counterChild: number = 0;
@@ -28,7 +55,8 @@ export class AccommodationListComponent implements OnInit {
     public accommodationService: AccommodationService,
     public regionService: RegionService,
     public typeAccommodationService: TypeAccommodationService,
-    private loader: LoadingService
+    private loader: LoadingService,
+    private ref: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +69,10 @@ export class AccommodationListComponent implements OnInit {
     //get the data for filter
     this.region$ = this.getRegions();
     this.typeAccommodation$ = this.getTypes();
+  }
+
+  ngAfterContentChecked() {
+    this.ref.detectChanges();
   }
 
   //function event on change page
@@ -68,12 +100,9 @@ export class AccommodationListComponent implements OnInit {
   }
 
   //funtions on DOM event
-  onClickFilter(): void {
-    if (this.displayFilter === true) {
-      this.displayFilter = false;
-    } else {
-      this.displayFilter = true;
-    }
+
+  displayMenu() {
+    this.isOpen = !this.isOpen;
   }
 
   onClickCapacity(): void {

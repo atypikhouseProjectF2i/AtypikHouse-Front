@@ -79,7 +79,7 @@ img {
 
     .menu-responsive {
         display: block;
-        background-color: #155B1D;
+        background-color: #FEFAE0;
         height: auto;
 
         :nth-child(3) {
@@ -94,10 +94,11 @@ img {
 
         a {
             text-align: center;
-            color: #FFF;
+            color: #0E402D;
             display: block;
             margin: 0 20px 10px 20px;
             text-decoration: none;
+            font-weight: 700;
         }
 
         :nth-child(4) {

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { AuthService } from '../../../core/services/auth.service';
 
@@ -19,8 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private loader: LoadingService,
-    private route: ActivatedRoute
+    private loader: LoadingService
   ) {}
 
   loading$ = this.loader.loading$;
@@ -39,8 +37,6 @@ export class LoginComponent implements OnInit {
         updateOn: 'blur',
       }
     );
-
-    this.successAccount = this.route.snapshot.paramMap.get('successAccount');
   }
 
   onSubmit(): void {

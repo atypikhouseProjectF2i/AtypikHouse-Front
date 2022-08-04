@@ -7,7 +7,7 @@ import { Region } from '../models/region.model';
   providedIn: 'root',
 })
 export class RegionService {
-  private baseUrl = 'http://localhost:8000/api';
+  private baseUrl = 'https://dsp-devo20-ecs-yl-am-ee.fr/api/public/api';
 
   constructor(private http: HttpClient) {}
 

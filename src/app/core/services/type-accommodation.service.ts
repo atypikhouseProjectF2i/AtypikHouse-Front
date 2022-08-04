@@ -7,7 +7,7 @@ import { TypeAccommodation } from '../models/type-accommodation.model';
   providedIn: 'root',
 })
 export class TypeAccommodationService {
-  private baseUrl = 'http://localhost:8000/api';
+  private baseUrl = 'https://dsp-devo20-ecs-yl-am-ee.fr/api/public/api';
 
   constructor(private http: HttpClient) {}
 

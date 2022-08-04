@@ -34,6 +34,8 @@ img {
 
 p {
     margin: 10px 20px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .accommodation-title {
@@ -43,4 +45,5 @@ p {
 
 .accommodation-description {
     color: #000;
+    text-overflow: ellipsis;
 }

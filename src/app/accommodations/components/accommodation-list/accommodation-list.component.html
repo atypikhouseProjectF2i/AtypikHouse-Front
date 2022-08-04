@@ -1,5 +1,5 @@
 <h1 class="title-list-accommodation">NOS HEBERGEMENTS</h1>
-<button class="button-filter" (click)="onClickFilter()">
+<button class="button-filter" (click)="displayMenu()">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -15,10 +15,7 @@
   </svg>
   Filtrer
 </button>
-<div
-  class="bloc-filter"
-  [ngClass]="{ 'bloc-filter-display': displayFilter === true }"
->
+<div class="bloc-filter" [@filterOpen]="isOpen ? 'open' : 'closed'">
   <select name="destination" id="destination" class="destination-select">
     <option value="">Destination</option>
     <option *ngFor="let region of region$ | async" [ngValue]="region">
@@ -135,7 +132,7 @@
 
 <div class="container-loader">
   <div class="loader">
-    <mat-spinner *ngIf="loading$ | async"></mat-spinner>
+    <mat-spinner *ngIf="loading$ | async" role="progressbar"></mat-spinner>
   </div>
 </div>
 
