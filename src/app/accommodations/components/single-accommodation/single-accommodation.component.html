@@ -146,3 +146,15 @@
     </form>
   </div>
 </div>
+
+<div class="review-list">
+  <div class="review-card" *ngFor="let review of reviewList">
+    <star-rating
+      [starType]="'svg'"
+      [rating]="review.score"
+      class="rating"
+      [readOnly]="true"
+    ></star-rating>
+    <p>{{ review.comment }}</p>
+  </div>
+</div>

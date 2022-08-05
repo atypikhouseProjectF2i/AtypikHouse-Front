@@ -102,3 +102,29 @@ h3 {
         margin: 20px 0;
     }
 }
+
+.review-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 40px 0;
+    margin-right: 0;
+    height: auto;
+    background: #FEFAE0;
+    padding: 20px;
+}
+
+.review-card {
+    width: 300px;
+    height: 200px;
+    border: solid 1px #679436;
+    border-radius: 25px;
+    background: #FFF;
+    padding: 20px;
+    text-align: center;
+}
+
+.carousel {
+    background: #000;
+}

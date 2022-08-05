@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable, pipe, tap } from 'rxjs';
 import { Accommodation } from 'src/app/core/models/accommodation.model';
+import { Review } from 'src/app/core/models/review.model';
 import { AccommodationService } from 'src/app/core/services/accommodation.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class SingleAccommodationComponent implements OnInit {
   totalReview: number = 0;
   reviewForm!: FormGroup;
   isConnect: boolean = false;
+  reviewList!: Review[];
 
   constructor(
     private activedRoute: ActivatedRoute,
@@ -30,6 +32,7 @@ export class SingleAccommodationComponent implements OnInit {
       .getAccommodationById(idAccommodation)
       .pipe(
         tap((value: any) => {
+          this.reviewList = value['reviews'];
           this.calculScore(value['reviews']);
         })
       );
