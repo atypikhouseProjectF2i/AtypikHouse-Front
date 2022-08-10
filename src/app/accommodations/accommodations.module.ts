@@ -11,6 +11,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { StarRatingModule } from 'angular-star-rating';
+import { AccordionModule } from 'primeng/accordion';
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { StarRatingModule } from 'angular-star-rating';
     MatNativeDateModule,
     MatProgressSpinnerModule,
     StarRatingModule.forRoot(),
+    AccordionModule,
+    CarouselModule,
+    ButtonModule,
   ],
   exports: [
     AccommodationListComponent,

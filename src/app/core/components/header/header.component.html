@@ -34,9 +34,7 @@
       Mon Compte
     </a>
 
-    <a routerLink="deconnexion" (click)="logout()" *ngIf="token"
-      >Se déconnecter</a
-    >
+    <a (click)="logout()" *ngIf="token">Se déconnecter</a>
 
     <a routerLink="inscription" routerLinkActive="active" *ngIf="!token"
       >S'inscrire

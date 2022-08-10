@@ -35,6 +35,10 @@ export class AuthService {
     );
   }
 
+  getUser() {
+    return this.http.get(`${this.baseUrl}/me`);
+  }
+
   signUp(formValueUser: {
     name: string;
     firstname: string;

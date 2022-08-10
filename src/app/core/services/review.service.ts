@@ -20,4 +20,18 @@ export class ReviewService {
       `${this.baseUrl}/reviews?accommodation.id=${idAccommodation}`
     );
   }
+
+  newReview(
+    comment: string,
+    score: number,
+    accommodation: string,
+    user: string
+  ) {
+    return this.http.post(`${this.baseUrl}/reviews`, {
+      comment,
+      score,
+      accommodation,
+      user,
+    });
+  }
 }

@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://dsp-devo20-ecs-yl-am-ee.fr/sitemap.xml

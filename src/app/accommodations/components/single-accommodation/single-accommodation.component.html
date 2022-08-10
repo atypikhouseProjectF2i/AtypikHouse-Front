@@ -125,6 +125,14 @@
     </div>
   </div>
 
+  <div class="alert alert-danger" *ngIf="errorReview" role="alert">
+    Vous devez avoir réservé cette hébergement pour poster un commentaire
+  </div>
+
+  <div class="alert alert-success" *ngIf="successReview" role="alert">
+    Commentaire bien ajouté !
+  </div>
+
   <div class="comment" *ngIf="isLogged()">
     <h3>Ecrire un commentaire</h3>
     <form [formGroup]="reviewForm">
@@ -147,14 +155,34 @@
   </div>
 </div>
 
-<div class="review-list">
-  <div class="review-card" *ngFor="let review of reviewList">
-    <star-rating
-      [starType]="'svg'"
-      [rating]="review.score"
-      class="rating"
-      [readOnly]="true"
-    ></star-rating>
-    <p>{{ review.comment }}</p>
+<div class="review-container" *ngIf="isEmpty">
+  <p-carousel
+    [value]="reviewList"
+    [numVisible]="3"
+    [numScroll]="1"
+    [circular]="false"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-review pTemplate="item">
+      <div class="review-list">
+        <div class="review-card">
+          <div>
+            <star-rating
+              [starType]="'svg'"
+              [rating]="review.score"
+              class="rating"
+              [readOnly]="true"
+            ></star-rating>
+            <p class="mb-1">{{ review.comment }}</p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+
+<div class="container-loader">
+  <div class="loader">
+    <mat-spinner *ngIf="loading$ | async"> </mat-spinner>
   </div>
 </div>

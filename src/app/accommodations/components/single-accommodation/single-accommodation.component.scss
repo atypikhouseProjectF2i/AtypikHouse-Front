@@ -67,7 +67,9 @@ h3 {
 }
 
 
-.alert-primary {
+.alert-primary,
+.alert-success,
+.alert-danger {
     width: 80%;
     margin: 20px auto;
 
@@ -103,16 +105,14 @@ h3 {
     }
 }
 
-.review-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin: 40px 0;
-    margin-right: 0;
-    height: auto;
+.review-container {
+    margin: 50px 0;
     background: #FEFAE0;
-    padding: 20px;
+}
+
+.review-list {
+    background: #FEFAE0;
+    padding: 20px 0;
 }
 
 .review-card {
@@ -121,10 +121,26 @@ h3 {
     border: solid 1px #679436;
     border-radius: 25px;
     background: #FFF;
-    padding: 20px;
     text-align: center;
+    margin: 0 auto;
 }
 
-.carousel {
-    background: #000;
+::ng-deep .p-carousel-container {
+    button {
+        font-size: 30px;
+        color: #0E402D;
+        margin: 0 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .accommodation-container {
+        flex: none;
+        display: block;
+        padding: 10px;
+    }
+
+    .accommodation-description {
+        width: 100%;
+    }
 }
