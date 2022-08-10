@@ -1,0 +1,14 @@
+<div class="alert alert-primary" role="alert">
+  <div>
+    Vous devez être accéder à cette page
+    <a routerLink="/connexion" class="alert-link">se connecter</a>.
+  </div>
+</div>
+
+<div *ngIf="token">
+  <h1>Mon compte</h1>
+
+  <div class="information-user">
+    <h2>Vos informations</h2>
+  </div>
+</div>
