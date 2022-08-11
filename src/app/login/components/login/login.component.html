@@ -4,7 +4,7 @@
   <p>compte bien créé !</p>
 </div>
 
-<div class="form-card">
+<div class="form-card" *ngIf="!loggedIn">
   <div *ngIf="loggedFailed">
     <div class="toast-error">
       Echec de connexion : E-mail ou mot de passe incorrect
@@ -58,9 +58,9 @@
       <a href="" class="forgot-password-link">Mot de passe oublié ?</a>
     </div>
   </form>
-  <div class="toast-connect" *ngIf="loggedIn">
-    <p>Vous êtes bien connecté !</p>
-  </div>
+</div>
+<div class="alert alert-success" *ngIf="loggedIn">
+  Vous êtes bien connecté !
 </div>
 
 <div class="container-loader">

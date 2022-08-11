@@ -1,10 +1,7 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -35,8 +32,21 @@ export class AuthService {
     );
   }
 
-  getUser() {
-    return this.http.get(`${this.baseUrl}/me`);
+  getUser(): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/me`);
+  }
+
+  updateUser(
+    idUser: number,
+    formValueUser: {
+      name: string;
+      firstname: string;
+      email: string;
+      phone: string;
+      newsletter: string;
+    }
+  ) {
+    return this.http.put(`${this.baseUrl}/users/${idUser}`, formValueUser);
   }
 
   signUp(formValueUser: {

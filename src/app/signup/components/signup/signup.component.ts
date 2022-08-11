@@ -19,8 +19,7 @@ export class SignupComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private loader: LoadingService,
-    private router: Router
+    private loader: LoadingService
   ) {}
 
   loading$ = this.loader.loading$;

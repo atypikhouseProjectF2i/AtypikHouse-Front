@@ -1,6 +1,6 @@
-<div class="alert alert-primary" role="alert">
+<div class="alert alert-primary" role="alert" *ngIf="!token">
   <div>
-    Vous devez être accéder à cette page
+    Vous devez être connecté pour accéder à cette page
     <a routerLink="/connexion" class="alert-link">se connecter</a>.
   </div>
 </div>
@@ -10,5 +10,43 @@
 
   <div class="information-user">
     <h2>Vos informations</h2>
+    <div class="alert alert-success" *ngIf="putSuccess">
+      Vos informations ont bien été mis à jour
+    </div>
+    <form [formGroup]="userPutForm" *ngIf="userData$ | async">
+      <div class="form-card">
+        <div class="form-group">
+          <label for="firstname">Votre prénom : </label>
+          <input type="text" formControlName="firstname" />
+        </div>
+        <div class="form-group">
+          <label for="name">Votre nom : </label>
+          <input type="name" formControlName="name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Votre email : </label>
+          <input type="email" formControlName="email" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Votre numéro de téléphone : </label>
+          <input type="text" formControlName="phone" />
+        </div>
+        <div class="form-group">
+          <label for="newsletter">Newsletter : </label>
+          <input type="checkbox" formControlName="newsletter" />
+        </div>
+        <div class="action-button">
+          <button type="submit" class="button-update" (click)="onSubmit()">
+            Enregistrer
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="container-loader">
+  <div class="loader">
+    <mat-spinner *ngIf="loading$ | async"></mat-spinner>
   </div>
 </div>
