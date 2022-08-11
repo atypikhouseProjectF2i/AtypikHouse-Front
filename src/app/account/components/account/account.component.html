@@ -43,6 +43,13 @@
       </div>
     </form>
   </div>
+  <div class="information-booking">
+    <h2>Vos réservations</h2>
+    <div *ngIf="(bookingUser$ | async)?.length == 0">
+      Vous avez pas de réservation.
+    </div>
+    <div *ngFor="let booking of bookingUser$ | async"></div>
+  </div>
 </div>
 
 <div class="container-loader">

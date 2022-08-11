@@ -1,8 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable, switchMap, tap } from 'rxjs';
+import { Booking } from 'src/app/core/models/booking.model';
 import { User } from 'src/app/core/models/user.model';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { BookingService } from 'src/app/core/services/booking.service';
 import { LoadingService } from 'src/app/core/services/loading.service';
 
 @Component({
@@ -13,6 +15,7 @@ import { LoadingService } from 'src/app/core/services/loading.service';
 export class AccountComponent implements OnInit {
   token!: any;
   userData$!: Observable<User>;
+  bookingUser$!: Observable<Booking[]>;
   regexPhone: string = '^((\\+)33|0)[1-9](\\d{2}){4}$';
   userPutForm!: FormGroup;
   idUser!: number;
@@ -21,6 +24,7 @@ export class AccountComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private bookingService: BookingService,
     private loader: LoadingService,
     private ref: ChangeDetectorRef,
     private formBuiler: FormBuilder
@@ -33,9 +37,16 @@ export class AccountComponent implements OnInit {
         tap((response) => {
           this.idUser = response.id;
           this.userPutForm.patchValue(response);
-        })
+        }),
+        switchMap(
+          () =>
+            (this.bookingUser$ = this.bookingService
+              .getBookingByIdUser(this.idUser)
+              .pipe(map((res: any) => res['hydra:member'])))
+        )
       );
     }
+
     this.userPutForm = this.formBuiler.group({
       name: [null, [Validators.required, Validators.minLength(5)]],
       firstname: [null, [Validators.required, Validators.minLength(5)]],
