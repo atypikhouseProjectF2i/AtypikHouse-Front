@@ -13,6 +13,10 @@
         class="rating"
         [readOnly]="true"
       ></star-rating>
+      <div>
+        Contacter le propriétaire au
+        <span>{{ accommodation.user?.phone }}</span>
+      </div>
       <button class="button-booking">Réserver</button>
     </div>
 
@@ -155,6 +159,12 @@
   </div>
 </div>
 
+<div class="container-loader">
+  <div class="loader">
+    <mat-spinner *ngIf="loading$ | async"> </mat-spinner>
+  </div>
+</div>
+
 <div class="review-container" *ngIf="isEmpty">
   <p-carousel
     [value]="reviewList"
@@ -179,10 +189,4 @@
       </div>
     </ng-template>
   </p-carousel>
-</div>
-
-<div class="container-loader">
-  <div class="loader">
-    <mat-spinner *ngIf="loading$ | async"> </mat-spinner>
-  </div>
 </div>

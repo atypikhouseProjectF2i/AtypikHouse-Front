@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, Observable, switchMap, tap } from 'rxjs';
 import { Booking } from 'src/app/core/models/booking.model';
 import { User } from 'src/app/core/models/user.model';
+import { AccommodationService } from 'src/app/core/services/accommodation.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { BookingService } from 'src/app/core/services/booking.service';
 import { LoadingService } from 'src/app/core/services/loading.service';
@@ -21,16 +22,19 @@ export class AccountComponent implements OnInit {
   idUser!: number;
   loading$ = this.loader.loading$;
   putSuccess: boolean = false;
+  pathImage!: string;
 
   constructor(
     private authService: AuthService,
     private bookingService: BookingService,
+    private accommodationService: AccommodationService,
     private loader: LoadingService,
     private ref: ChangeDetectorRef,
     private formBuiler: FormBuilder
   ) {}
 
   ngOnInit(): void {
+    this.pathImage = this.accommodationService.pathImage;
     this.token = this.authService.getToken();
     if (this.token) {
       this.userData$ = this.authService.getUser().pipe(
@@ -42,7 +46,10 @@ export class AccountComponent implements OnInit {
           () =>
             (this.bookingUser$ = this.bookingService
               .getBookingByIdUser(this.idUser)
-              .pipe(map((res: any) => res['hydra:member'])))
+              .pipe(
+                map((res: any) => res['hydra:member']),
+                tap((res: any) => {})
+              ))
         )
       );
     }

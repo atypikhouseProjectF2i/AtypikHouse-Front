@@ -4,6 +4,7 @@ import { Region } from './region.model';
 import { Activity } from './activity.model';
 import { Service } from './service.model';
 import { Equipement } from './equipement.model';
+import { User } from './user.model';
 
 export class Accommodation {
   id!: number;
@@ -24,4 +25,5 @@ export class Accommodation {
   activity?: Activity[];
   service?: Service[];
   equipement?: Equipement[];
+  user?: User;
 }

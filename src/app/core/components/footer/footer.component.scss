@@ -24,6 +24,11 @@
             text-decoration-color: rgba(255, 255, 255, 1);
         }
     }
+
+    &__social {
+        display: flex;
+        justify-content: space-around;
+    }
 }
 
 .credit {

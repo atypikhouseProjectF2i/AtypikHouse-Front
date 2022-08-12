@@ -48,7 +48,30 @@
     <div *ngIf="(bookingUser$ | async)?.length == 0">
       Vous avez pas de réservation.
     </div>
-    <div *ngFor="let booking of bookingUser$ | async"></div>
+    <div *ngFor="let booking of bookingUser$ | async">
+      <div class="information-booking__accommodation">
+        <img
+          [src]="pathImage + booking.accommodation?.imageUrl"
+          [alt]="booking.accommodation?.name"
+          srcset=""
+        />
+        <div>
+          <a
+            [routerLink]="['/hebergements', booking.accommodation?.id]"
+            role="link"
+          >
+            <h3 role="link">{{ booking.accommodation?.name }}</h3>
+          </a>
+          <p>
+            Votre réservation du
+            {{ booking.startDate | date: "dd/MM/yyyy" }} au
+            {{ booking.endDate | date: "dd/MM/yyyy" }} <br />
+            en {{ booking.accommodation?.region?.name }} pour un total de
+            {{ booking.total }} €
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

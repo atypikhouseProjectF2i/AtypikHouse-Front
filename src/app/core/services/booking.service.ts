@@ -10,8 +10,6 @@ export class BookingService {
   constructor(private http: HttpClient) {}
 
   getBookingByIdUser(idUser: number): Observable<Booking[]> {
-    return this.http.get<Booking[]>(
-      `${this.baseUrl}/bookings?accommodation.user=${idUser}`
-    );
+    return this.http.get<Booking[]>(`${this.baseUrl}/bookings?user=${idUser}`);
   }
 }
