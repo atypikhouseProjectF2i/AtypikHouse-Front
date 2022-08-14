@@ -4,7 +4,6 @@ import { AccommodationComponent } from './components/accommodation/accommodation
 import { AccommodationListComponent } from './components/accommodation-list/accommodation-list.component';
 import { SingleAccommodationComponent } from './components/single-accommodation/single-accommodation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,6 +13,7 @@ import { StarRatingModule } from 'angular-star-rating';
 import { AccordionModule } from 'primeng/accordion';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
+import { AccommodationsRoutingModule } from './accommodations-routing.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule,
+    AccommodationsRoutingModule,
     MatPaginatorModule,
     MatDatepickerModule,
     MatFormFieldModule,

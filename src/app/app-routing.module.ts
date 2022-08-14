@@ -1,29 +1,49 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccommodationListComponent } from './accommodations/components/accommodation-list/accommodation-list.component';
-import { AccountComponent } from './account/components/account/account.component';
-import { ContactComponent } from './contact/components/contact/contact.component';
 import { HomeComponent } from './home/components/home/home.component';
-import { HostComponent } from './host/components/host/host.component';
-import { LoginComponent } from './login/components/login/login.component';
-import { SignupComponent } from './signup/components/signup/signup.component';
-import { SingleAccommodationComponent } from './accommodations/components/single-accommodation/single-accommodation.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'hebergements', component: AccommodationListComponent },
-  { path: 'hebergements/:id', component: SingleAccommodationComponent },
-  { path: 'hote', component: HostComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'connexion', component: LoginComponent },
-  { path: 'inscription', component: SignupComponent },
-  { path: 'mon-compte', component: AccountComponent },
+  {
+    path: 'hebergements',
+    loadChildren: () =>
+      import('./accommodations/accommodations.module').then(
+        (mod) => mod.AccommodationsModule
+      ),
+  },
+  {
+    path: 'connexion',
+    loadChildren: () =>
+      import('./login/login.module').then((mod) => mod.LoginModule),
+  },
+  {
+    path: 'mon-compte',
+    loadChildren: () =>
+      import('./account/account.module').then((mod) => mod.AccountModule),
+  },
+  {
+    path: 'contact',
+    loadChildren: () =>
+      import('./contact/contact.module').then((mod) => mod.ContactModule),
+  },
+  {
+    path: 'hote',
+    loadChildren: () =>
+      import('./host/host.module').then((mod) => mod.HostModule),
+  },
+  {
+    path: 'inscription',
+    loadChildren: () =>
+      import('./signup/signup.module').then((mod) => mod.SignupModule),
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabledBlocking'
-})],
+  imports: [
+    RouterModule.forRoot(routes, {
+      initialNavigation: 'enabledBlocking',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
