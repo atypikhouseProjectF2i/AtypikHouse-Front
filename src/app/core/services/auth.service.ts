@@ -48,6 +48,13 @@ export class AuthService {
     return this.http.put(`${this.baseUrl}/users/${idUser}`, formValueUser);
   }
 
+  updatePassword(idUser: number, oldPassword: string, newPassword: string) {
+    return this.http.put(`${this.baseUrl}/users/${idUser}/reset_password`, {
+      oldPassword,
+      newPassword,
+    });
+  }
+
   signUp(formValueUser: {
     name: string;
     firstname: string;

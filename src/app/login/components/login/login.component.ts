@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
   loggedIn: boolean = false;
   loggedFailed: boolean = false;
-  successAccount!: any;
+  successAccount!: boolean;
 
   constructor(
     private formBuilder: FormBuilder,

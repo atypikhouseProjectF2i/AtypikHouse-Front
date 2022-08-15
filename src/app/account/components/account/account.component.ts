@@ -22,6 +22,7 @@ export class AccountComponent implements OnInit {
   idUser!: number;
   loading$ = this.loader.loading$;
   putSuccess: boolean = false;
+  putSuccessPassword: boolean = false;
   pathImage!: string;
 
   constructor(
@@ -46,10 +47,7 @@ export class AccountComponent implements OnInit {
           () =>
             (this.bookingUser$ = this.bookingService
               .getBookingByIdUser(this.idUser)
-              .pipe(
-                map((res: any) => res['hydra:member']),
-                tap((res: any) => {})
-              ))
+              .pipe(map((res: any) => res['hydra:member'])))
         )
       );
     }
@@ -59,6 +57,8 @@ export class AccountComponent implements OnInit {
       firstname: [null, [Validators.required, Validators.minLength(5)]],
       email: [null, [Validators.required, Validators.email]],
       phone: [null, [Validators.required, Validators.pattern(this.regexPhone)]],
+      oldPassword: [null],
+      newPassword: [null],
       newsletter: [false],
     });
   }
@@ -68,6 +68,27 @@ export class AccountComponent implements OnInit {
   }
 
   onSubmit() {
+    if (
+      this.userPutForm.value.oldPassword &&
+      this.userPutForm.value.newPassword !== null
+    ) {
+      this.authService
+        .updatePassword(
+          this.idUser,
+          this.userPutForm.value.oldPassword,
+          this.userPutForm.value.newPassword
+        )
+        .subscribe({
+          next: () => {},
+          error: (error: any) => {
+            if (error.status === 403) {
+              this.putSuccessPassword = true;
+              this.putSuccess = false;
+            }
+          },
+        });
+    }
+
     if (this.userPutForm.valid) {
       this.authService
         .updateUser(this.idUser, this.userPutForm.value)
@@ -75,9 +96,7 @@ export class AccountComponent implements OnInit {
           next: () => {
             this.putSuccess = true;
           },
-          error: () => {
-            console.log();
-          },
+          error: () => {},
         });
     }
   }
