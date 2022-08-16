@@ -1,0 +1,15 @@
+<!-- <div *ngFor="let booking of bookingAccommodation$ | async">
+  {{ booking.startDate }}
+</div> -->
+
+<div class="datepicker">
+  <mat-form-field appearance="legacy">
+    <mat-label class="label-date">Date du séjour</mat-label>
+    <mat-date-range-input [rangePicker]="picker" [dateFilter]="dateDisabled">
+      <input matStartDate />
+      <input matEndDate />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+</div>

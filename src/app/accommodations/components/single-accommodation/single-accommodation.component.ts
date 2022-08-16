@@ -115,11 +115,10 @@ export class SingleAccommodationComponent implements OnInit {
           next: () => {
             this.successReview = true;
           },
-          error: (error: any) => {
+          error: () => {
             this.errorReview = true;
           },
         });
-    } else {
     }
   }
 }

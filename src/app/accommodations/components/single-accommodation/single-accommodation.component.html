@@ -17,7 +17,12 @@
         Contacter le propriétaire au
         <span>{{ accommodation.user?.phone }}</span>
       </div>
-      <button class="button-booking">Réserver</button>
+      <button
+        class="button-booking"
+        [routerLink]="['/reservation', idAccommodation]"
+      >
+        Réserver
+      </button>
     </div>
 
     <div class="accommodation-description">

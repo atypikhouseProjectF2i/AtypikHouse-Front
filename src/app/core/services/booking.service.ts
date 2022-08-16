@@ -12,4 +12,10 @@ export class BookingService {
   getBookingByIdUser(idUser: number): Observable<Booking[]> {
     return this.http.get<Booking[]>(`${this.baseUrl}/bookings?user=${idUser}`);
   }
+
+  getBookingByIdAccommodation(idAccommodation: number): Observable<Booking[]> {
+    return this.http.get<Booking[]>(
+      `${this.baseUrl}/bookings?accommodations=${idAccommodation}`
+    );
+  }
 }
