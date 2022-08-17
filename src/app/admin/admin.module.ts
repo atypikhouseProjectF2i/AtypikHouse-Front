@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './components/admin/admin.component';
-import { MatTableModule } from '@angular/material/table';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AdminComponent],
-  imports: [CommonModule, AdminRoutingModule, MatTableModule],
+  imports: [CommonModule, AdminRoutingModule, NgbModule],
   exports: [AdminComponent],
 })
 export class AdminModule {}

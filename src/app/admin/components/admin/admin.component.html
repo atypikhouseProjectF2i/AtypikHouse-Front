@@ -18,7 +18,7 @@
           <button
             type="button"
             class="btn btn-warning"
-            (click)="editService(services.id)"
+            (click)="open(contentService, services)"
           >
             Modifier
           </button>
@@ -36,3 +36,30 @@
     </tfoot>
   </table>
 </div>
+
+<ng-template #contentService let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Modifier service</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      {{ modalContent.id }}
+      {{ modalContent.name }}
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Fermer
+    </button>
+  </div>
+</ng-template>

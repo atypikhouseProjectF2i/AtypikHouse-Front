@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { map, Observable } from 'rxjs';
 import { ServiceAccommodation } from 'src/app/core/models/service-accommodation.model';
 import { ServicesAccommodationService } from 'src/app/core/services/services-accommodations.service';
@@ -9,11 +10,12 @@ import { ServicesAccommodationService } from 'src/app/core/services/services-acc
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name'];
   servicesAccommodations$!: Observable<ServiceAccommodation[]>;
+  modalContent!: any;
 
   constructor(
-    private servicesAccommodationsService: ServicesAccommodationService
+    private servicesAccommodationsService: ServicesAccommodationService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -24,5 +26,22 @@ export class AdminComponent implements OnInit {
 
   editService(idService: number) {
     alert(idService);
+  }
+
+  open(content: any, services: ServiceAccommodation) {
+    this.modalContent = services;
+    this.modalService.open(content, {
+      ariaLabelledBy: 'modal-basic-title',
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }
