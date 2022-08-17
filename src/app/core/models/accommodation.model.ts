@@ -2,7 +2,7 @@ import { Review } from './review.model';
 import { TypeAccommodation } from './type-accommodation.model';
 import { Region } from './region.model';
 import { Activity } from './activity.model';
-import { Service } from './service.model';
+import { ServiceAccommodation } from './service-accommodation.model';
 import { Equipement } from './equipement.model';
 import { User } from './user.model';
 
@@ -23,7 +23,7 @@ export class Accommodation {
   typeAccommodation?: TypeAccommodation;
   reviews?: Review[];
   activity?: Activity[];
-  service?: Service[];
+  service?: ServiceAccommodation[];
   equipement?: Equipement[];
   user?: User;
 }

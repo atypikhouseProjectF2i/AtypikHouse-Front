@@ -1,0 +1,37 @@
+h1 {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.table-service {
+    width: 80%;
+    margin: 80px auto;
+    padding: 10px;
+
+    thead {
+        tr {
+            text-align: center;
+            border-bottom: 2px solid #000;
+        }
+    }
+
+    tbody {
+        tr {
+            border-bottom: 1px solid #808080;
+        }
+
+        th,
+        td {
+            text-align: center;
+            padding: 20px;
+        }
+    }
+
+    tfoot {
+        text-align: right;
+
+        th {
+            padding: 20px;
+        }
+    }
+}

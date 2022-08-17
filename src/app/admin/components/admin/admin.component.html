@@ -1,0 +1,38 @@
+<h1>Espace admin</h1>
+
+<div class="admin">
+  <table class="table-service">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Modifier</th>
+        <th scope="col">Supprimer</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let services of servicesAccommodations$ | async">
+      <tr>
+        <th scope="row">{{ services.id }}</th>
+        <td>{{ services.name | titlecase }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-warning"
+            (click)="editService(services.id)"
+          >
+            Modifier
+          </button>
+        </td>
+        <td><button type="button" class="btn btn-danger">Supprimer</button></td>
+      </tr>
+      <tr></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="4">
+          <button type="button" class="btn btn-primary">Ajouter</button>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
