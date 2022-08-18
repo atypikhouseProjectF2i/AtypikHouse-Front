@@ -14,14 +14,13 @@ export class LoginComponent implements OnInit {
   loggedIn: boolean = false;
   loggedFailed: boolean = false;
   successAccount!: boolean;
+  loading$ = this.loader.loading$;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private loader: LoadingService
   ) {}
-
-  loading$ = this.loader.loading$;
 
   ngOnInit(): void {
     if (this.authService.getToken() !== null) {

@@ -27,7 +27,6 @@
     "@angular/router": "~14.1.0",
     "@coreui/angular": "^4.1.0",
     "@coreui/coreui": "^4.2.0",
-    "@ng-bootstrap/ng-bootstrap": "^13.0.0",
     "@nguniversal/express-engine": "^14.0.3",
     "angular-star-rating": "^6.0.0",
     "bootstrap": "^5.2.0",

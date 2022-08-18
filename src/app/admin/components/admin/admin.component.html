@@ -1,6 +1,10 @@
 <h1>Espace admin</h1>
 
-<div class="admin">
+<div class="alert alert-warning" *ngIf="!admin">
+  Vous n'êtes pas autorisé à naviguer sur cette page
+</div>
+
+<div class="admin" *ngIf="admin">
   <table class="table-service">
     <thead>
       <tr>
@@ -18,48 +22,41 @@
           <button
             type="button"
             class="btn btn-warning"
-            (click)="open(contentService, services)"
+            (click)="openDialogEdit(services.id, services.name)"
           >
             Modifier
           </button>
         </td>
-        <td><button type="button" class="btn btn-danger">Supprimer</button></td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="onDelete(services.id)"
+          >
+            Supprimer
+          </button>
+        </td>
       </tr>
       <tr></tr>
     </tbody>
     <tfoot>
       <tr>
         <th colspan="4">
-          <button type="button" class="btn btn-primary">Ajouter</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="openDialogNew()"
+          >
+            Ajouter
+          </button>
         </th>
       </tr>
     </tfoot>
   </table>
 </div>
 
-<ng-template #contentService let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Modifier service</h4>
-    <button
-      type="button"
-      class="btn-close"
-      aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    ></button>
+<div class="container-loader">
+  <div class="loader">
+    <mat-spinner *ngIf="loading$ | async"> </mat-spinner>
   </div>
-  <div class="modal-body">
-    <form>
-      {{ modalContent.id }}
-      {{ modalContent.name }}
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-outline-dark"
-      (click)="modal.close('Save click')"
-    >
-      Fermer
-    </button>
-  </div>
-</ng-template>
+</div>
