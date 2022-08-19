@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ServicesAccommodationService } from 'src/app/core/services/services-accommodations.service';
+import { ServiceAccommodationService } from 'src/app/core/services/service-accommodation.service';
 
 @Component({
   selector: 'app-services-accommodations-modal-edit',
@@ -14,7 +14,7 @@ export class ServicesAccommodationsModalEdit implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
     private dialogRef: MatDialogRef<ServicesAccommodationsModalEdit>,
-    private servicesAccommodations: ServicesAccommodationService,
+    private serviceAccommodationService: ServiceAccommodationService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -35,7 +35,7 @@ export class ServicesAccommodationsModalEdit implements OnInit {
   }
 
   onSubmit(): void {
-    this.servicesAccommodations
+    this.serviceAccommodationService
       .updateServiceById(
         this.editServiceForm.value.id,
         this.editServiceForm.value.name
@@ -43,7 +43,6 @@ export class ServicesAccommodationsModalEdit implements OnInit {
       .subscribe({
         next: () => {
           this.onCancel();
-          alert('Modification bien enregistrée');
         },
       });
   }

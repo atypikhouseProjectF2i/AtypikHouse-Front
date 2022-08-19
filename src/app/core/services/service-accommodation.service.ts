@@ -6,24 +6,26 @@ import { ServiceAccommodation } from '../models/service-accommodation.model';
 @Injectable({
   providedIn: 'root',
 })
-export class ServicesAccommodationService {
+export class ServiceAccommodationService {
   private baseUrl = 'https://dsp-devo20-ecs-yl-am-ee.fr/api/public/api';
 
   constructor(private http: HttpClient) {}
 
   getAllServices(): Observable<ServiceAccommodation[]> {
-    return this.http.get<ServiceAccommodation[]>(`${this.baseUrl}/services`);
+    return this.http.get<ServiceAccommodation[]>(
+      `${this.baseUrl}/service_accos`
+    );
   }
 
   updateServiceById(id: number, name: string): Observable<any> {
-    return this.http.put(`${this.baseUrl}/services/${id}`, { name });
+    return this.http.put(`${this.baseUrl}/service_accos/${id}`, { name });
   }
 
   addNewService(formValueService: { name: string }) {
-    return this.http.post(`${this.baseUrl}/services`, formValueService);
+    return this.http.post(`${this.baseUrl}/service_accos`, formValueService);
   }
 
   deleteServiceById(idService: number) {
-    return this.http.delete(`${this.baseUrl}/services/${idService}`);
+    return this.http.delete(`${this.baseUrl}/service_accos/${idService}`);
   }
 }

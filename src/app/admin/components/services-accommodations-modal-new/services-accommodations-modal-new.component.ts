@@ -1,7 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ServicesAccommodationService } from 'src/app/core/services/services-accommodations.service';
+import { ServiceAccommodationService } from 'src/app/core/services/service-accommodation.service';
 
 @Component({
   selector: 'app-services-accommodations-modal-new',
@@ -13,7 +13,7 @@ export class ServicesAccommodationsModalNewComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ServicesAccommodationsModalNewComponent>,
-    private servicesAccommodations: ServicesAccommodationService,
+    private serviceAccommodationService: ServiceAccommodationService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -34,13 +34,11 @@ export class ServicesAccommodationsModalNewComponent implements OnInit {
 
   onSubmit(): void {
     if (this.serviceForm.valid) {
-      this.servicesAccommodations
+      this.serviceAccommodationService
         .addNewService(this.serviceForm.value)
         .subscribe({
           next: () => {
             this.onCancel();
-            alert('Service bien enregistrée');
-            //location.reload();
           },
         });
     }

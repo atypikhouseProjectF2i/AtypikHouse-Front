@@ -1,0 +1,16 @@
+<h1>Créer nouveau équipement</h1>
+<div mat-dialog-content>
+  <div class="body-modal">
+    <form [formGroup]="equipementForm">
+      <input
+        type="text"
+        formControlName="name"
+        placeholder="Ecrivez un nouveau équipement"
+      />
+    </form>
+  </div>
+  <div class="button-modal">
+    <button class="btn btn-success" (click)="onSubmit()">Enregistrer</button>
+    <button class="btn btn-danger" (click)="onCancel()">Fermer</button>
+  </div>
+</div>

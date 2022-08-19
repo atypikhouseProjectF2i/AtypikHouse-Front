@@ -5,6 +5,12 @@
 </div>
 
 <div class="admin" *ngIf="admin">
+  <h3>Listes des services pour les hébergements</h3>
+  <div class="container-loader">
+    <div class="loader">
+      <mat-spinner *ngIf="loading$ | async"> </mat-spinner>
+    </div>
+  </div>
   <table class="table-service">
     <thead>
       <tr>
@@ -22,7 +28,7 @@
           <button
             type="button"
             class="btn btn-warning"
-            (click)="openDialogEdit(services.id, services.name)"
+            (click)="openDialogEditService(services.id, services.name)"
           >
             Modifier
           </button>
@@ -31,7 +37,7 @@
           <button
             type="button"
             class="btn btn-danger"
-            (click)="onDelete(services.id)"
+            (click)="onDeleteService(services.id)"
           >
             Supprimer
           </button>
@@ -45,7 +51,7 @@
           <button
             type="button"
             class="btn btn-primary"
-            (click)="openDialogNew()"
+            (click)="openDialogNewService()"
           >
             Ajouter
           </button>
@@ -55,8 +61,116 @@
   </table>
 </div>
 
-<div class="container-loader">
-  <div class="loader">
-    <mat-spinner *ngIf="loading$ | async"> </mat-spinner>
+<div class="admin" *ngIf="admin">
+  <h3>Listes des équipements pour les hébergements</h3>
+  <div class="container-loader">
+    <div class="loader">
+      <mat-spinner *ngIf="loading$ | async"> </mat-spinner>
+    </div>
   </div>
+  <table class="table-equipement">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Modifier</th>
+        <th scope="col">Supprimer</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let equipements of equipements$ | async">
+      <tr>
+        <th scope="row">{{ equipements.id }}</th>
+        <td>{{ equipements.name | titlecase }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-warning"
+            (click)="openDialogEditEquipement(equipements.id, equipements.name)"
+          >
+            Modifier
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="onDeleteEquipement(equipements.id)"
+          >
+            Supprimer
+          </button>
+        </td>
+      </tr>
+      <tr></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="4">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="openDialogNewEquipement()"
+          >
+            Ajouter
+          </button>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<div class="admin" *ngIf="admin">
+  <h3>Listes des activités pour les hébergements</h3>
+  <div class="container-loader">
+    <div class="loader">
+      <mat-spinner *ngIf="loading$ | async"> </mat-spinner>
+    </div>
+  </div>
+  <table class="table-activity">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Modifier</th>
+        <th scope="col">Supprimer</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let activities of activity$ | async">
+      <tr>
+        <th scope="row">{{ activities.id }}</th>
+        <td>{{ activities.name | titlecase }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-warning"
+            (click)="openDialogEditActivity(activities.id, activities.name)"
+          >
+            Modifier
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="onDeleteActivity(activities.id)"
+          >
+            Supprimer
+          </button>
+        </td>
+      </tr>
+      <tr></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="4">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="openDialogNewActivity()"
+          >
+            Ajouter
+          </button>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
 </div>

@@ -71,12 +71,12 @@
       </p>
       <p>
         <span>Services : </span>
-        <b *ngIf="accommodation.service?.length === 0">Aucun services</b>
-        <b *ngFor="let service of accommodation.service; let i = index">
+        <b *ngIf="accommodation.serviceAcco?.length === 0">Aucun services</b>
+        <b *ngFor="let service of accommodation.serviceAcco; let i = index">
           {{ service.name | titlecase
           }}<b
             *ngIf="
-              i + 1 === accommodation.service?.length;
+              i + 1 === accommodation.serviceAcco?.length;
               else ElseBlockService
             "
             >.</b

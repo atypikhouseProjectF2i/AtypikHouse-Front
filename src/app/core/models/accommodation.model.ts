@@ -23,7 +23,7 @@ export class Accommodation {
   typeAccommodation?: TypeAccommodation;
   reviews?: Review[];
   activity?: Activity[];
-  service?: ServiceAccommodation[];
+  serviceAcco?: ServiceAccommodation[];
   equipement?: Equipement[];
   user?: User;
 }

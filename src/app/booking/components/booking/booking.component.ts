@@ -33,11 +33,12 @@ export class BookingComponent implements OnInit {
               new Date(element.startDate),
               new Date(element.endDate),
             ]);
-            console.log(this.dateBooking[1]);
             this.dateDisabled = (date: Date | null): boolean => {
               this.dateBooking.forEach((item) => {
                 item;
-                item.forEach(() => {});
+                item.forEach((res) => {
+                  return !(date! >= res && date! <= res);
+                });
               });
               return (
                 !date! &&
