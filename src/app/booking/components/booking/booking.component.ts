@@ -68,4 +68,7 @@ export class BookingComponent implements OnInit {
       }
     );
   }
+  onSubmit() {
+    console.log(this.bookingForm.value);
+  }
 }

@@ -10,5 +10,6 @@
       <mat-date-range-picker #picker></mat-date-range-picker>
     </mat-form-field>
     <p>Selected range: {{ bookingForm.value | json }}</p>
+    <button class="btn btn-success" (click)="onSubmit()">Envoyer</button>
   </div>
 </form>
