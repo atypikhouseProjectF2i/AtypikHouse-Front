@@ -6,6 +6,7 @@ import { BookingComponent } from './components/booking/booking.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [BookingComponent],
@@ -15,6 +16,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
+    ReactiveFormsModule,
   ],
   exports: [BookingComponent],
 })

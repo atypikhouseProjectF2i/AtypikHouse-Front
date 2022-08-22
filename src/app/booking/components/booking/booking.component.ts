@@ -1,5 +1,10 @@
-import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { Booking } from 'src/app/core/models/booking.model';
@@ -15,10 +20,12 @@ export class BookingComponent implements OnInit {
   bookingAccommodation$!: Observable<Booking[]>;
   dateBooking: Array<Array<any>> = [];
   dateDisabled!: any;
+  bookingForm!: FormGroup;
 
   constructor(
     private activedRoute: ActivatedRoute,
-    private bookingService: BookingService
+    private bookingService: BookingService,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -33,24 +40,32 @@ export class BookingComponent implements OnInit {
               new Date(element.startDate),
               new Date(element.endDate),
             ]);
-            this.dateDisabled = (date: Date | null): boolean => {
-              this.dateBooking.forEach((item) => {
-                item;
-                item.forEach((res) => {
-                  return !(date! >= res && date! <= res);
-                });
-              });
-              return (
-                !date! &&
-                !(
-                  date! >= this.dateBooking[1][0] &&
-                  date! <= this.dateBooking[1][1]
-                ) &&
-                date! >= new Date()
-              );
-            };
           });
+
+          this.dateDisabled = (date: Date | null): any => {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            if (date! < today) return false;
+            for (let i = 0; i < this.dateBooking.length; i++) {
+              if (
+                date! >= this.dateBooking[i][0] &&
+                date! <= this.dateBooking[i][1]
+              )
+                return false;
+            }
+            return true;
+          };
         },
       });
+
+    this.bookingForm = this.formBuilder.group(
+      {
+        start: [null, [Validators.required]],
+        end: [null, Validators.required],
+      },
+      {
+        updateOn: 'blur',
+      }
+    );
   }
 }
