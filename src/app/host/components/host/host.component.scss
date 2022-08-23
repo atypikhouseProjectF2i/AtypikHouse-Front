@@ -2,3 +2,20 @@ h1 {
     text-align: center;
     margin: 20px auto;
 }
+
+.body-host {
+    margin: 20px auto;
+    padding: 20px 10px;
+    text-align: left;
+    font-size: 20px;
+}
+
+.alert-primary {
+    width: 80%;
+    margin: 20px auto;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}

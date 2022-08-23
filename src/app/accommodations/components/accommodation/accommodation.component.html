@@ -6,6 +6,15 @@
   <p class="accommodation-region">
     {{ accommodation.region.name | titlecase }}
   </p>
-  <p class="accommodation-review">{{ accommodation.reviews?.length }} avis</p>
-  <p class="accomodation-description">{{ accommodation.description }}</p>
+  <div class="accommodation-review">
+    <star-rating
+      [starType]="'svg'"
+      [rating]="totalReview"
+      class="rating"
+      [readOnly]="true"
+    >
+    </star-rating>
+    <p>{{ accommodation.reviews?.length }} avis</p>
+  </div>
+  <p class="accommodation-description">{{ accommodation.description }}</p>
 </div>

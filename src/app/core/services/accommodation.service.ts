@@ -22,4 +22,10 @@ export class AccommodationService {
   getAccommodationById(id: number): Observable<Accommodation> {
     return this.http.get<Accommodation>(`${this.baseUrl}/accommodations/${id}`);
   }
+
+  getAccommodationByIdUser(id: number): Observable<Accommodation[]> {
+    return this.http.get<Accommodation[]>(
+      `${this.baseUrl}/accommodations?user=${id}&pagination=false`
+    );
+  }
 }

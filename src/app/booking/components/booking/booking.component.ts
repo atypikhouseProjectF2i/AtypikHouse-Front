@@ -67,7 +67,10 @@ export class BookingComponent implements OnInit {
         updateOn: 'blur',
       }
     );
+
+    console.log(this.dateBooking);
   }
+
   onSubmit() {
     console.log(this.bookingForm.value);
   }

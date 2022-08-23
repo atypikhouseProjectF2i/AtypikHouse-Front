@@ -11,6 +11,8 @@ import { AccommodationService } from '../../../core/services/accommodation.servi
 export class AccommodationComponent implements OnInit {
   @Input() accommodation!: Accommodation;
   pathImage!: string;
+  totalReview: number = 0;
+
   constructor(
     private router: Router,
     private accommodationService: AccommodationService
@@ -19,6 +21,7 @@ export class AccommodationComponent implements OnInit {
   ngOnInit(): void {
     this.pathImage =
       this.accommodationService.pathImage + this.accommodation.imageUrl;
+    this.calculScore(this.accommodation.reviews);
   }
 
   onClickAccommodation() {
@@ -27,5 +30,13 @@ export class AccommodationComponent implements OnInit {
     );
 
     window.open(url, '_blank');
+  }
+
+  calculScore(review: any): any {
+    let total = 0;
+    review.forEach((element: any) => {
+      total += element.score / review.length;
+      this.totalReview = Math.round(total);
+    });
   }
 }

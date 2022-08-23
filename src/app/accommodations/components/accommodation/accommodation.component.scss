@@ -12,10 +12,11 @@
 
 .accommodation-bloc:hover {
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
 img {
-    width: 300px;
+    width: 100%;
     height: 200px;
     border-radius: 25px 25px 0 0;
 }
@@ -32,18 +33,34 @@ img {
     font-weight: 700;
 }
 
-p {
+.accommodation-region {
     margin: 10px 20px;
-    white-space: nowrap;
-    overflow: hidden;
 }
 
 .accommodation-title {
+    margin: 10px 20px;
     font-size: 20px;
     font-weight: 700;
 }
 
 .accommodation-description {
+    margin: 10px 20px;
     color: #000;
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.accommodation-review {
+    margin: 0 20px;
+    display: flex;
+
+    p {
+        margin: 0;
+        margin-left: 5px;
+    }
+}
+
+.rating {
+    width: 100px;
 }
