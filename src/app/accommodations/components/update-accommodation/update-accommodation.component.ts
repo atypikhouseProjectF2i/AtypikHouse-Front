@@ -60,7 +60,29 @@ export class UpdateAccommodationComponent implements OnInit {
       nbSleeping: [null, [Validators.required]],
       capacityAdult: [null, [Validators.required]],
       capacityChild: [null, [Validators.required]],
-      activity: [false],
+      activity: this.formBuiler.array([]),
     });
+  }
+
+  onSubmit() {
+    console.log(this.updateAccommodationForm.value);
+  }
+
+  onCheckboxChangeActivity(event: any) {
+    const checkArray: FormArray = this.updateAccommodationForm.get(
+      'activity'
+    ) as FormArray;
+    if (event.target.checked) {
+      checkArray.push(new FormControl('api/activities/' + event.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: any) => {
+        if (item.value == event.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
   }
 }
