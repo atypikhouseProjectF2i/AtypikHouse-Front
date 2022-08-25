@@ -14,12 +14,16 @@ import { AccordionModule } from 'primeng/accordion';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { AccommodationsRoutingModule } from './accommodations-routing.module';
+import { AccommodationBookingComponent } from './components/accommodation-booking/accommodation-booking.component';
+import { UpdateAccommodationComponent } from './components/update-accommodation/update-accommodation.component';
 
 @NgModule({
   declarations: [
     AccommodationComponent,
     AccommodationListComponent,
     SingleAccommodationComponent,
+    AccommodationBookingComponent,
+    UpdateAccommodationComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +44,8 @@ import { AccommodationsRoutingModule } from './accommodations-routing.module';
     AccommodationListComponent,
     AccommodationComponent,
     SingleAccommodationComponent,
+    AccommodationBookingComponent,
+    UpdateAccommodationComponent,
   ],
 })
 export class AccommodationsModule {}

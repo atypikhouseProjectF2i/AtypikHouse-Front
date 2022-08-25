@@ -1,0 +1,20 @@
+<div class="card-accommodation">
+  <div class="card-accommodation-img">
+    <img
+      [src]="pathImage + accommodationHost.imageUrl"
+      [alt]="accommodationHost.name"
+    />
+  </div>
+  <div class="card-accommodation-description">
+    <h3>{{ accommodationHost.name }}</h3>
+  </div>
+  <button class="btn btn-primary">Réservations</button>
+  <button
+    class="btn btn-warning"
+    [routerLink]="['/hebergements/modifier', accommodationHost.id]"
+  >
+    Modifier
+  </button>
+  <button class="btn btn-danger">Supprimer</button>
+  <hr />
+</div>

@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { map, Observable, ObservedValueOf, switchMap } from 'rxjs';
+import { map, Observable, ObservedValueOf, switchMap, tap } from 'rxjs';
 import { AccommodationService } from 'src/app/core/services/accommodation.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { LoadingService } from 'src/app/core/services/loading.service';
@@ -12,6 +12,7 @@ import { LoadingService } from 'src/app/core/services/loading.service';
 export class HostComponent implements OnInit {
   isConnect: boolean = false;
   accommodationByUser$!: Observable<any>;
+  pathImage!: string;
   loading$ = this.loader.loading$;
 
   constructor(
@@ -23,6 +24,7 @@ export class HostComponent implements OnInit {
 
   ngOnInit(): void {
     if (sessionStorage.getItem('token') !== null) {
+      this.pathImage = this.accommodationService.pathImage;
       this.accommodationByUser$ = this.authService.getUser().pipe(
         switchMap((user: any) =>
           this.accommodationService.getAccommodationByIdUser(user?.id)

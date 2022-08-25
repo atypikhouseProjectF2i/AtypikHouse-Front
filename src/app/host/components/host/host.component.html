@@ -6,13 +6,20 @@
   </div>
 </div>
 
-<div *ngFor="let acco of accommodationByUser$ | async">
-  {{ acco.id }}
-</div>
+<ng-template #trueHost>
+  <h2 class="title-accommodation-host">Vos hébergements</h2>
+  <div *ngFor="let accommodationHost of accommodationByUser$ | async">
+    <app-accommodation-booking [accommodationHost]="accommodationHost">
+    </app-accommodation-booking>
+  </div>
+</ng-template>
 
 <div
   class="body-host"
-  *ngIf="!isLogged() || (accommodationByUser$ | async)?.length === 0"
+  *ngIf="
+    !isLogged() || (accommodationByUser$ | async)?.length === 0;
+    else trueHost
+  "
 >
   <p>
     Vous possédez un ou plusieurs hébergements atypique et vous souhaitez les
