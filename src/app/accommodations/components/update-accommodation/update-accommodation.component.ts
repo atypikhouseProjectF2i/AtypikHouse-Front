@@ -23,6 +23,7 @@ export class UpdateAccommodationComponent implements OnInit {
   pathImage!: string;
   updateAccommodation$!: Observable<any>;
   activity$!: Observable<any>;
+  activityCheck!: any;
 
   constructor(
     private accommodationService: AccommodationService,
@@ -39,8 +40,23 @@ export class UpdateAccommodationComponent implements OnInit {
       .pipe(
         tap((response) => {
           this.updateAccommodationForm.patchValue(response);
+          this.activityCheck = (idActivity: number): any => {
+            for (let i = 0; i < response.activity?.length!; i++) {
+              if (response.activity![i].id === idActivity) {
+                return true;
+              }
+            }
+          };
+          const checkArrayActivity: FormArray = this.updateAccommodationForm
+            .controls['activity'] as FormArray;
+          response.activity?.forEach((data: any) => {
+            checkArrayActivity.push(
+              new FormControl('api/activities/' + data.id)
+            );
+          });
         })
       );
+
     this.activity$ = this.activityService
       .getAllActivities()
       .pipe(map((res: any) => res['hydra:member']));
@@ -60,29 +76,27 @@ export class UpdateAccommodationComponent implements OnInit {
       nbSleeping: [null, [Validators.required]],
       capacityAdult: [null, [Validators.required]],
       capacityChild: [null, [Validators.required]],
-      activity: this.formBuiler.array([]),
+      activity: new FormArray([]),
     });
   }
 
   onSubmit() {
-    console.log(this.updateAccommodationForm.value);
+    console.log(this.updateAccommodationForm.value.activity);
   }
 
   onCheckboxChangeActivity(event: any) {
-    const checkArray: FormArray = this.updateAccommodationForm.get(
+    const checkArrayActivity: FormArray = this.updateAccommodationForm.controls[
       'activity'
-    ) as FormArray;
+    ] as FormArray;
     if (event.target.checked) {
-      checkArray.push(new FormControl('api/activities/' + event.target.value));
+      checkArrayActivity.push(
+        new FormControl('api/activities/' + event.target.value)
+      );
     } else {
-      let i: number = 0;
-      checkArray.controls.forEach((item: any) => {
-        if (item.value == event.target.value) {
-          checkArray.removeAt(i);
-          return;
-        }
-        i++;
-      });
+      const index = checkArrayActivity.controls.findIndex(
+        (x) => x.value === event.target.value
+      );
+      checkArrayActivity.removeAt(index);
     }
   }
 }

@@ -17,14 +17,16 @@
     </div>
     <div class="form-group">
       <label>Activités de l'hébergement :</label>
-      <div *ngFor="let activity of activity$ | async; let i = index">
+      <div *ngFor="let activity of activity$ | async">
         <label>
           <input
             type="checkbox"
             [value]="activity.id"
+            [checked]="activityCheck(activity.id)"
             (change)="onCheckboxChangeActivity($event)"
+            formArrayName="activity"
           />
-          {{ activity.name }}
+          {{ activity.name | titlecase }}
         </label>
       </div>
     </div>
