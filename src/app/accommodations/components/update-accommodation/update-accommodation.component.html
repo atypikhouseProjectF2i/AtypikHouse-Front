@@ -15,6 +15,7 @@
       <label for="price">Prix de l'hébergement :</label>
       <input type="text" formControlName="price" />
     </div>
+    <hr />
     <div class="form-group">
       <label>Activités de l'hébergement :</label>
       <div *ngFor="let activity of activity$ | async">
@@ -24,12 +25,32 @@
             [value]="activity.id"
             [checked]="activityCheck(activity.id)"
             (change)="onCheckboxChangeActivity($event)"
-            formArrayName="activity"
           />
           {{ activity.name | titlecase }}
         </label>
       </div>
     </div>
+    <hr />
+    <div class="form-group">
+      <label>Services de l'hébergement :</label>
+      <div *ngFor="let serviceAcco of serviceAcco$ | async">
+        <label>
+          <input
+            type="checkbox"
+            [value]="serviceAcco.id"
+            [checked]="serviceAccoCheck(serviceAcco.id)"
+            (change)="onCheckboxChangeActivity($event)"
+          />
+          {{ serviceAcco.name | titlecase }}
+        </label>
+      </div>
+    </div>
     <button (click)="onSubmit()">Envoyer</button>
   </form>
+</div>
+
+<div class="container-loader">
+  <div class="loader">
+    <mat-spinner *ngIf="loading$ | async"></mat-spinner>
+  </div>
 </div>
