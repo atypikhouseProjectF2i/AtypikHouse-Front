@@ -1,4 +1,4 @@
-<h1>Espace admin</h1>
+<h1 *ngIf="admin">Espace admin</h1>
 
 <div class="alert alert-warning" *ngIf="!admin">
   Vous n'êtes pas autorisé à naviguer sur cette page

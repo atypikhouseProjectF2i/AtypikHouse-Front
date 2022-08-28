@@ -1,0 +1,15 @@
+<h1>À propos de nous !</h1>
+
+<div *ngIf="about$ | async as about">
+  <div class="body-about">
+    <h2>
+      {{ about.title }}
+    </h2>
+    <p>
+      {{ about.description }}
+    </p>
+    <div *ngIf="admin">
+      <button class="btn btn-warning" routerLink="modifier">Modifier</button>
+    </div>
+  </div>
+</div>

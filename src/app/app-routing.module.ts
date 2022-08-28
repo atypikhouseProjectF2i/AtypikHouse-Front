@@ -46,6 +46,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./admin/admin.module').then((mod) => mod.AdminModule),
   },
+  {
+    path: 'a-propos',
+    loadChildren: () =>
+      import('./about/about.module').then((mod) => mod.AboutModule),
+  },
 ];
 
 @NgModule({

@@ -47,8 +47,7 @@ export class UpdateAccommodationComponent implements OnInit {
               }
             }
           };
-          const checkArrayActivity: FormArray = this.updateAccommodationForm
-            .controls['activity'] as FormArray;
+          const checkArrayActivity: FormArray = this.updateAccommodationForm.controls['activity'] as FormArray;
           response.activity?.forEach((data: any) => {
             checkArrayActivity.push(
               new FormControl('api/activities/' + data.id)
