@@ -1,0 +1,23 @@
+h1 {
+    text-align: center;
+    margin: 20px auto 50px;
+}
+
+.body-legal-notices {
+    width: 90%;
+    margin: 20px auto;
+
+    h2 {
+        margin-bottom: 20px;
+        margin-top: 70px;
+    }
+
+    p {
+        letter-spacing: 0.2;
+
+        &:last-child {
+            margin-bottom: 100px;
+        }
+    }
+
+}
