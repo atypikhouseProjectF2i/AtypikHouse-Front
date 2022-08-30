@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
     this.meta.addTag({
       name: 'description',
       content:
-        "Envie de tenter l'aventure atypique ? N'attendez plus ! Découvrer tous les hébergements insolites disponibles sur notre site.",
+        "Envie de tenter l'aventure atypique ? N'attendez plus ! Découvrez tous les hébergements insolites disponibles sur notre site.",
     });
   }
 }
