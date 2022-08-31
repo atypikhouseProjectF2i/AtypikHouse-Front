@@ -18,6 +18,8 @@ import { TypeAccommodationService } from 'src/app/core/services/type-accommodati
 import { TypeAccommodation } from 'src/app/core/models/type-accommodation.model';
 import { Equipement } from 'src/app/core/models/equipement.model';
 import { EquipementService } from 'src/app/core/services/equipement.service';
+import { Region } from 'src/app/core/models/region.model';
+import { RegionService } from 'src/app/core/services/region.service';
 
 @Component({
   selector: 'app-update-accommodation',
@@ -33,13 +35,16 @@ export class UpdateAccommodationComponent implements OnInit {
   serviceAccommodation$!: Observable<ServiceAccommodation[]>;
   typeAccommodation$!: Observable<TypeAccommodation[]>;
   equipementAccommodation$!: Observable<Equipement[]>;
+  regions$!: Observable<Region[]>;
   loading$ = this.loader.loading$;
   activityCheck!: any;
   serviceAccoCheck!: any;
   equipementCheck!: any;
   pathImage!: string;
-
   altImage!: string;
+  fileName!: string;
+  errorTypeFile: boolean = false;
+  successUploadFile: boolean = false;
 
   constructor(
     private accommodationService: AccommodationService,
@@ -47,6 +52,7 @@ export class UpdateAccommodationComponent implements OnInit {
     private serviceAccommodationService: ServiceAccommodationService,
     private typeAccommodationService: TypeAccommodationService,
     private equipementService: EquipementService,
+    private regionService: RegionService,
     private activedRoute: ActivatedRoute,
     private loader: LoadingService,
     private ref: ChangeDetectorRef,
@@ -56,9 +62,6 @@ export class UpdateAccommodationComponent implements OnInit {
   ngOnInit(): void {
     this.idAccommodation = +this.activedRoute.snapshot.params['id'];
 
-    this.pathImage = this.accommodationService.pathImage;
-
-
     this.updateAccommodation$ = this.accommodationService
       .getAccommodationById(this.idAccommodation)
       .pipe(
@@ -67,6 +70,10 @@ export class UpdateAccommodationComponent implements OnInit {
           this.pathImage =
             this.accommodationService.pathImage + response.imageUrl;
           this.altImage = response.name;
+
+          this.updateAccommodationForm
+            .get('region')
+            ?.patchValue(response.region.id);
 
           //enabled check for activity
           this.activityCheck = (idActivity: number): any => {
@@ -130,6 +137,10 @@ export class UpdateAccommodationComponent implements OnInit {
       .getAllEquipements()
       .pipe(map((res: any) => res['hydra:member']));
 
+    this.regions$ = this.regionService
+      .getAllRegions()
+      .pipe(map((res: any) => res['hydra:member']));
+
     this.updateAccommodationForm = this.formBuiler.group({
       name: [null, [Validators.required]],
       price: [null, [Validators.required]],
@@ -154,7 +165,7 @@ export class UpdateAccommodationComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.updateAccommodationForm.value.serviceAcco);
+    console.log(this.updateAccommodationForm.value);
   }
 
   onCheckboxChangeActivity(event: any) {
@@ -202,5 +213,36 @@ export class UpdateAccommodationComponent implements OnInit {
       );
       checkArrayEquipement.removeAt(index);
     }
+  }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+
+    if (file) {
+      if (file.type.includes('image/')) {
+        this.fileName = file.name;
+        const formData = new FormData();
+
+        formData.append('file', file);
+
+        this.accommodationService
+          .uploadImage(formData, this.idAccommodation)
+          .subscribe({
+            next: (data: any) => {
+              this.pathImage =
+                this.accommodationService.pathImage + data.imageUrl;
+              this.successUploadFile = true;
+            },
+          });
+      } else {
+        this.errorTypeFile = true;
+      }
+    }
+  }
+
+  changeRegion(event: any) {
+    this.updateAccommodationForm
+      .get('region')
+      ?.setValue(event.target.value, { onlySelf: true });
   }
 }

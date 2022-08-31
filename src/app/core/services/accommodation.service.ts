@@ -28,4 +28,11 @@ export class AccommodationService {
       `${this.baseUrl}/accommodations?user=${id}&pagination=false`
     );
   }
+
+  uploadImage(formData: any, idAccommodation: number) {
+    return this.http.post(
+      `${this.baseUrl}/accommodations/${idAccommodation}/images`,
+      formData
+    );
+  }
 }
