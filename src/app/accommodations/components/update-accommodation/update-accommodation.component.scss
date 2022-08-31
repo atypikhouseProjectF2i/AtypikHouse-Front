@@ -1,3 +1,63 @@
+
+.form-update-accommodation {
+    width: 100%;
+    margin: 30px auto 70px;
+    padding: 20px;
+    box-shadow: 4px 4px 20px #D3D3D3;
+}
+
+.form-group {
+    margin: 10px auto;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    input,
+    textarea {
+        width: 50%;
+    }
+
+    img {
+        width: 50%;
+    }
+}
+
+.checkbox {
+    width: 50%;
+
+    input {
+        width: auto;
+        margin-right: 10px;
+    }
+}
+
+
+.button-update {
+    text-align: center;
+    margin-top: 50px;
+
+    button {
+        background: #7A542E;
+        color: #FFF;
+        padding: 5px 10px;
+        border: 1px solid;
+        border-radius: 25px;
+        margin: 10px 20px;
+        outline: none;
+        font-size: 16px;
+        font-weight: 500;
+
+        &:hover {
+            background: #0E402D;
+        }
+
+        &:active {
+            transform: translate(1px, 1px);
+        }
+    }
+=======
 .form-update-accommodation {
     width: 100%;
     margin: 30px auto 70px;

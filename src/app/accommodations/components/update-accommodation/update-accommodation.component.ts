@@ -39,6 +39,8 @@ export class UpdateAccommodationComponent implements OnInit {
   equipementCheck!: any;
   pathImage!: string;
 
+  altImage!: string;
+
   constructor(
     private accommodationService: AccommodationService,
     private activityService: ActivityService,
@@ -53,13 +55,18 @@ export class UpdateAccommodationComponent implements OnInit {
 
   ngOnInit(): void {
     this.idAccommodation = +this.activedRoute.snapshot.params['id'];
+
     this.pathImage = this.accommodationService.pathImage;
+
 
     this.updateAccommodation$ = this.accommodationService
       .getAccommodationById(this.idAccommodation)
       .pipe(
         tap((response) => {
           this.updateAccommodationForm.patchValue(response);
+          this.pathImage =
+            this.accommodationService.pathImage + response.imageUrl;
+          this.altImage = response.name;
 
           //enabled check for activity
           this.activityCheck = (idActivity: number): any => {
