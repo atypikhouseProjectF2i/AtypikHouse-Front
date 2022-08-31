@@ -38,6 +38,7 @@ export class UpdateAccommodationComponent implements OnInit {
   serviceAccoCheck!: any;
   equipementCheck!: any;
   pathImage!: string;
+
   altImage!: string;
 
   constructor(
@@ -54,6 +55,9 @@ export class UpdateAccommodationComponent implements OnInit {
 
   ngOnInit(): void {
     this.idAccommodation = +this.activedRoute.snapshot.params['id'];
+
+    this.pathImage = this.accommodationService.pathImage;
+
 
     this.updateAccommodation$ = this.accommodationService
       .getAccommodationById(this.idAccommodation)

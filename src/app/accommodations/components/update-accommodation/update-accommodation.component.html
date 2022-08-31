@@ -23,7 +23,9 @@
     </div>
     <hr />
     <div class="form-group">
+
       <label>Activitées de l'hébergement :</label>
+
       <div class="checkbox">
         <div *ngFor="let activity of activity$ | async">
           <input
@@ -68,11 +70,13 @@
         </div>
       </div>
     </div>
+
     <hr />
     <div class="form-group">
       <span>Image de l'hébergement :</span>
       <img [src]="pathImage" [alt]="altImage" />
     </div>
+
     <div class="button-update">
       <button (click)="onSubmit()">Enregistrer</button>
     </div>
