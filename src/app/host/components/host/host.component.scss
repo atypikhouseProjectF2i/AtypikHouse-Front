@@ -23,3 +23,24 @@ h1 {
 .title-accommodation-host {
     margin: 20px;
 }
+
+.button-new {
+  display: block;
+  background: #7A542E;
+  color: #FFF;
+  padding: 5px 10px;
+  border: 1px solid;
+  border-radius: 25px;
+  margin: 50px auto 30px;
+  outline: none;
+  font-size: 16px;
+  font-weight: 500;
+
+  &:hover {
+    background: #0E402D;
+  }
+
+  &:active {
+    transform: translate(1px, 1px);
+  }
+}

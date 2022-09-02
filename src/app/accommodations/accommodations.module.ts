@@ -16,6 +16,7 @@ import { ButtonModule } from 'primeng/button';
 import { AccommodationsRoutingModule } from './accommodations-routing.module';
 import { AccommodationBookingComponent } from './components/accommodation-booking/accommodation-booking.component';
 import { UpdateAccommodationComponent } from './components/update-accommodation/update-accommodation.component';
+import {NewAccommodationComponent} from "./components/new-accommodation/new-accommodation.component";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { UpdateAccommodationComponent } from './components/update-accommodation/
     SingleAccommodationComponent,
     AccommodationBookingComponent,
     UpdateAccommodationComponent,
+    NewAccommodationComponent
   ],
   imports: [
     CommonModule,
@@ -46,6 +48,7 @@ import { UpdateAccommodationComponent } from './components/update-accommodation/
     SingleAccommodationComponent,
     AccommodationBookingComponent,
     UpdateAccommodationComponent,
+    NewAccommodationComponent
   ],
 })
 export class AccommodationsModule {}

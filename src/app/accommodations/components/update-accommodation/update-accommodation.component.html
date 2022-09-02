@@ -4,24 +4,92 @@
   </div>
 </div>
 
-<div class="form-update-accommodation">
+
+<ng-template #ElseBlocHost>
+  <div class="alert alert-danger">
+    Vous ne pouvez pas accéder à cette page
+  </div>
+</ng-template>
+
+<div class="form-update-accommodation" *ngIf="isHost; else ElseBlocHost">
   <form
     [formGroup]="updateAccommodationForm"
     *ngIf="updateAccommodation$ | async"
   >
     <div class="form-group">
       <label for="name">Nom de l'hébergement :</label>
-      <input type="text" formControlName="name" />
+      <input type="text" formControlName="name"/>
     </div>
     <div class="form-group">
       <label for="description">Description de l'hébergement :</label>
       <textarea type="text" formControlName="description" rows="10"></textarea>
     </div>
     <div class="form-group">
-      <label for="price">Prix de l'hébergement par nuit :</label>
-      <input type="text" formControlName="price" />
+      <label for="surface">Surface de l'hébergement <strong>(en m²)</strong> :</label>
+      <input type="number" formControlName="surface"/>
     </div>
-    <hr />
+    <div class="form-group">
+      <label for="price">Prix de l'hébergement par nuit <strong>(en €)</strong> :</label>
+      <input type="number" formControlName="price"/>
+    </div>
+    <div class="form-group">
+      <label for="address">Adresse de l'hébergement :</label>
+      <input type="text" formControlName="address"/>
+    </div>
+    <div class="form-group">
+      <label for="zipCode">Code postal de l'hébergement :</label>
+      <input type="text" formControlName="zipCode"/>
+    </div>
+    <div class="form-group">
+      <label for="city">Ville de l'hébergement :</label>
+      <input type="text" formControlName="city"/>
+    </div>
+    <div class="form-group">
+      <label for="capacityAdult">Nombre de capacité pour adulte :</label>
+      <input type="number" formControlName="capacityAdult"/>
+    </div>
+    <div class="form-group">
+      <label for="capacityChild">Nombre de capacité pour enfant :</label>
+      <input type="number" formControlName="capacityChild"/>
+    </div>
+    <div class="form-group">
+      <label for="nbSleeping">Nombre de couchage :</label>
+      <input type="number" formControlName="nbSleeping"/>
+    </div>
+
+    <div class="form-group">
+      <label for="region">Région de l'hébergement :</label>
+      <select
+        (change)="changeRegion($event)"
+        formControlName="region"
+        id="region"
+      >
+        <option
+          *ngFor="let region of regions$ | async"
+          [value]="'api/regions/' + region.id"
+        >
+          {{ region.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="region">Type de l'hébergement :</label>
+      <select
+        (change)="changeType($event)"
+        formControlName="typeAccommodation"
+        id="typeAccommodation"
+      >
+        <option
+          *ngFor="let typeAccommodation of typeAccommodation$ | async"
+          [value]="'api/type_accommodations/' + typeAccommodation.id"
+        >
+          {{ typeAccommodation.name | titlecase }}
+        </option>
+      </select>
+    </div>
+
+    <hr/>
     <div class="form-group">
       <label>Activitées de l'hébergement :</label>
 
@@ -37,7 +105,7 @@
         </div>
       </div>
     </div>
-    <hr />
+    <hr/>
     <div class="form-group">
       <label>Services de l'hébergement :</label>
       <div class="checkbox">
@@ -54,7 +122,7 @@
         </div>
       </div>
     </div>
-    <hr />
+    <hr/>
     <div class="form-group">
       <label>Équipements de l'hébergement :</label>
       <div class="checkbox">
@@ -70,10 +138,10 @@
       </div>
     </div>
 
-    <hr />
+    <hr/>
     <div class="form-group">
       <span>Image de l'hébergement :</span>
-      <img [src]="pathImage" [alt]="altImage" />
+      <img [src]="pathImage" [alt]="altImage"/>
     </div>
 
     <div class="container-loader">
@@ -92,27 +160,19 @@
 
     <div class="form-group form-group__file">
       <label class="custom-file-upload">
-        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+        <input type="file" (change)="onFileSelected($event)" accept="image/*"/>
         Joindre une nouvelle image
       </label>
       <span>{{ fileName || "Pas d'image jointe." }}</span>
     </div>
-    <hr />
-    <div class="form-group">
-      <label for="region">Région de l'hébergement :</label>
-      <select
-        (change)="changeRegion($event)"
-        formControlName="region"
-        id="region"
-      >
-        <option *ngFor="let region of regions$ | async" [value]="region.id">
-          {{ region.name }}
-        </option>
-      </select>
-    </div>
+    <hr/>
 
     <div class="button-update">
       <button (click)="onSubmit()">Enregistrer</button>
     </div>
   </form>
+</div>
+
+<div class="alert alert-success" *ngIf="isSuccess">
+  Hébergement bien mis à jour
 </div>
