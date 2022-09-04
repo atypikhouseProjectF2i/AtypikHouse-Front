@@ -1,0 +1,47 @@
+.header-cookie {
+  display: flex;
+  flex-wrap: nowrap;
+
+
+  img {
+    padding: 20px;
+    width: auto;
+    height: 150px;
+  }
+}
+
+a {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-cookie {
+  display: flex;
+  justify-content: space-evenly;
+
+  button {
+    padding: 30px;
+    margin: 0 10px;
+    font-size: 20px;
+  }
+
+  .accept-cookie {
+    background: #0E402D;
+    color: #FFF;
+    border: 1px solid #155B1D;
+  }
+
+  .refuse-cookie {
+    background: #D3D3D3;
+    color: #000;
+    border: 1px solid #808080;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  button {
+    width: auto;
+  }
+
+}
+
