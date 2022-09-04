@@ -32,7 +32,7 @@ export class UpdateAccommodationComponent implements OnInit {
   updateAccommodationForm!: FormGroup;
   idAccommodation!: number;
   idUser!: number;
-  isHost: boolean = false;
+  isHost: boolean = true;
   updateAccommodation$!: Observable<any>;
   activity$!: Observable<Activity[]>;
   serviceAccommodation$!: Observable<ServiceAccommodation[]>;
