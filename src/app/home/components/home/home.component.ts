@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import {Component, OnInit} from '@angular/core';
+import {Meta, Title} from '@angular/platform-browser';
+import {CookieComponent} from "../cookie/cookie.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,9 @@ import { Meta, Title } from '@angular/platform-browser';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private meta: Meta, private titleService: Title) {}
+  constructor(private meta: Meta, private titleService: Title,
+              private dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
     this.titleService.setTitle(
@@ -17,6 +21,14 @@ export class HomeComponent implements OnInit {
       name: 'description',
       content:
         "Envie de tenter l'aventure atypique ? N'attendez plus ! Découvrez tous les hébergements insolites disponibles sur notre site.",
+    });
+
+    this.openDialogCookie()
+  }
+
+  openDialogCookie(): void {
+    this.dialog.open(CookieComponent, {
+      width: '700px',
     });
   }
 }

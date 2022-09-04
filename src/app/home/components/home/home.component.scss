@@ -1,33 +1,33 @@
 body {
-    background:
-        linear-gradient(to bottom, #155B1D, #0008), center center / cover url("../../../../assets/images/background_home.jpg") fixed;
-    color: #FFF;
-    padding: 20px 0 0;
+  background: linear-gradient(to bottom, #155B1D, #0008), center center / cover url("../../../../assets/images/background_home.jpg") fixed;
+  color: #FFF;
+  padding: 20px 0 0;
 }
 
 h1 {
-    text-align: center;
-    margin: 0 auto 50px;
+  text-align: center;
+  margin: 0 auto 50px;
 }
 
 .body-home {
-    width: 90%;
-    margin: 100px auto;
-    font-size: 26px;
-    text-align: center;
+  width: 90%;
+  margin: 100px auto;
+  font-size: 26px;
+  text-align: center;
 
-    &__link {
-        margin: 50px auto;
+  &__link {
+    margin: 50px auto;
 
-        a {
-            text-decoration: none;
-            color: #FFF;
-            font-weight: 700;
-        }
+    a {
+      text-decoration: none;
+      color: #FFF;
+      font-weight: 700;
     }
+  }
 
-    span {
-        color: #7A542E;
-        font-weight: 700;
-    }
+  span {
+    color: #7A542E;
+    font-weight: 700;
+  }
 }
+
