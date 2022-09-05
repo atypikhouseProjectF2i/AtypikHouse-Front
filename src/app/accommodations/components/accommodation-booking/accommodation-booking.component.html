@@ -11,7 +11,10 @@
   <button class="btn btn-primary">Réservations</button>
   <button
     class="btn btn-warning"
-    [routerLink]="['/hebergements/modifier', accommodationHost.id]"
+    [routerLink]="[
+      '/hebergements/modifier-un-hebergement',
+      accommodationHost.id
+    ]"
   >
     Modifier
   </button>
